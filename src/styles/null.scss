@@ -76,3 +76,12 @@ h6 {
 		font-size: 16px;
 	}
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--autofill-color, var(--color))!important; /* цвет текста */
+	caret-color: var(--autofill-color, var(--color));
+  transition: background-color 5000s ease-in-out 0s; /* замедление смены фона */
+}

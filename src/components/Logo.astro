@@ -1,0 +1,15 @@
+---
+	interface Props {
+		style?: "light" | "dark";
+		className?: string;
+	}
+
+	const { className, style = "dark" } = Astro.props;
+---
+
+<a href="/" class:list={["logo", className]}>
+	<figure class="logo__inner">
+		<img class="logo__img" src={`img/logo-${style}.svg`} alt="Логотип компании Qumen Kitchen">
+		<figcaption class="logo__caption">Qumen Kitchen</figcaption>
+	</figure>
+</a>

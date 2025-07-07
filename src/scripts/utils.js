@@ -5,6 +5,9 @@ export let isMobile = { Android: function () { return navigator.userAgent.match(
 export function isEmpty(value) {
 	return value === null || value === undefined || value === "";
 }
+export function addLeadingZero(value) {
+	return Number(value) < 10 ? `0${value}` : value;
+}
 export function isNotEmptyString(value) {
 	return typeof value === "string" && value.length > 0;
 }

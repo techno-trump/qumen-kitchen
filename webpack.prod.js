@@ -53,6 +53,16 @@ const config = {
 							},
 						},
 					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions: {
+								plugins: [
+									['autoprefixer', {}],
+								],
+							},
+						},
+					},
 					// "group-css-media-queries-loader",
 					{
 						loader: 'sass-loader',

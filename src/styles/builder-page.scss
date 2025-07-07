@@ -1,0 +1,57 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.builder-page {
+	padding-top: mi.rem(72);
+	@media (max-width: config.$mbpT) {
+		padding: mi.rem(152) 0 mi.rem(80);
+	}
+	@media (max-width: config.$mbpMM) {
+		padding: mi.rem(132) 0 mi.rem(60);
+	}
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: mi.rem(10);
+		margin-bottom: mi.rem(26);
+		@media (max-width: config.$mbpT) {
+			display: none;
+		}
+	}
+	&__title {
+	}
+	&__actions {
+		display: grid;
+		grid-auto-flow: column;
+		gap: mi.rem(10);
+	}
+	&__body {
+		padding: 0 mi.rem(10) mi.rem(10);
+		@media (max-width: config.$mbpT) {
+			display: none;
+		}
+	}
+	&__unavailable {
+		@media (min-width: (config.$mbpT + 1px)) {
+			display: none;
+		}
+	}
+	&__unavailable-img {
+		width: mi.rem(424);
+		height: mi.rem(200);
+		object-fit: contain;
+		margin-bottom: mi.rem(40);
+		@media (max-width: config.$mbpMM) {
+			width: mi.rem(240);
+			height: mi.rem(100);
+			margin-bottom: mi.rem(24);
+		}
+	}
+	&__unavailable-title {
+		margin-bottom: mi.rem(12);
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(10);
+		}
+	}
+}

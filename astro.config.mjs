@@ -21,5 +21,11 @@ export default defineConfig({
 				'img': path.resolve(__dirname, 'public/img')
 			}
 		},
+    build: {
+      minify: false, // Отключает минимизацию всего (HTML, JS, CSS)
+    },
+		logging: {
+			level: 'errors', // или 'debug'
+		}
   },
 });

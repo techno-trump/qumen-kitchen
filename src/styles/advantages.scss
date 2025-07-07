@@ -1,0 +1,120 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.advantages {
+	color: var(--color-text-light);
+	position: relative;
+	display: grid;
+	grid-template-columns: 100%;
+	overflow: hidden;
+	&::before {
+		content: "";
+		grid-row: 1/span 1;
+		grid-column: 1/span 1;
+		padding-top: 56.22%;
+		@media (max-width: config.$mbpT) {
+			padding-top: 133.33%;
+		}
+		@media (max-width: config.$mbpMM) {
+			padding-top: 156.25%;
+		}
+	}
+	&::after {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+		width: 100%;
+		height: 100%;
+		background-color: var(--color-sf-bg-02);
+	}
+	&__bg {
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 120%;
+		object-fit: cover;
+	}
+	&__container {
+		grid-row: 1/span 1;
+		grid-column: 1/span 1;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		z-index: 1;
+	}
+	&__inner {
+		flex: 1 1 auto;
+		display: grid;
+		grid-template-columns: 100%;
+		align-content: space-between;
+		padding: mi.rem(60) 0;
+		@media (max-width: config.$mbpT) {
+			padding: mi.rem(40) 0;
+		}
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(20) 0;
+		}
+	}
+	&__list {
+		justify-self: end;
+		@media (max-width: config.$mbpT) {
+			width: 100%;
+		}
+	}
+	&__title {
+		margin-bottom: mi.rem(20);
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(14);
+		}
+	}
+	&__card {
+		flex: 1 0 auto;
+		max-width: mi.rem(306);
+		padding-right: mi.rem(20);
+		@media (max-width: config.$mbpT) {
+			max-width: none;
+		}
+		@media (max-width: config.$mbpMM) {
+			padding-right: mi.rem(16);
+		}
+	}
+	&__card-view {
+		width: mi.rem(45.5);
+		height: mi.rem(45.5);
+		margin-bottom: mi.rem(10);
+		@media (max-width: config.$mbpT) {
+			margin-bottom: mi.rem(16);
+		}
+		@media (max-width: config.$mbpMM) {
+			width: mi.rem(40);
+			height: mi.rem(40);
+			margin-bottom: mi.rem(12);
+		}
+	}
+	&__card-title {
+		font-size: mi.rem(20);
+		margin-bottom: mi.rem(10);
+		max-width: mi.rem(270);
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(24);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(16);
+			margin-bottom: mi.rem(8);
+		}
+	}
+	&__card-description {
+		font-size: mi.rem(16);
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(18);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+}

@@ -1,7 +1,120 @@
 ---
+import Logo from "./Logo.astro";
+import Social from "./Social.astro";
+
 //const portalHost = import.meta.env.ASTRO_APP_CABINET_HOST;
+
+interface Props {
+	page?: string;
+}
+
+const { page } = Astro.props;
+
+
 ---
 
-<header id="header" class="header">
-	
+<header id="header" class="header dark-context" data-page={page}>
+	<!-- <div class="header__underlay">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div> -->
+	<div class="container header__container">
+		<div class="header-menu header__menu" data-drawer="navigation" data-lenis-prevent>
+			<div class="header-menu__panel" data-elem="drawer.panel">
+				<div class="header-menu__panel-inner">
+					<nav class="header-menu__nav" data-lenis-prevent>
+						{
+							[
+								{ caption: "Преимущества", href: "#advantages" },
+								{ caption: "Готовые проекты", href: "#projects" },
+								{ caption: "Как собрать кухню", href: "#steps" },
+								{ caption: "Видеоинструкции", href: "#manuals" },
+								{ caption: "Конструктор", href: "#builder" },
+								{ caption: "Маркетплейсы", href: "#marketplaces" },
+								{ caption: "Производство", href: "#factory" },
+								{ caption: "Вопросы и ответы", href: "#faq" },
+								{ caption: "Контакты", href: "#contact" },
+							].map(({ href, caption }) => <a href={href} class="link header-menu__item">
+										<span class="header-menu__item-inner">
+											<span class="link__label header-menu__item-label">{caption}</span>
+										</span>
+									</a>)
+						}
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="header__group header__group_sm-gap">
+			<button type="button" class="btn btn_primary btn_square btn_sm burger-btn header__burger-btn" title="Меню" data-drawer-toggle="navigation">
+				<svg class="burger-btn__inner" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 .75 H14" class="burger-btn__line" stroke="currentColor" stroke-width="1.5"/>
+					<path d="M0 6 H14" class="burger-btn__line" stroke="currentColor" stroke-width="1.5"/>
+					<path d="M0 11.25 H14" class="burger-btn__line" stroke="currentColor" stroke-width="1.5"/>
+				</svg>
+				<span class="burger-btn__label btn__label_hidden">Показать меню</span>
+			</button>
+			<div class="header__logos">
+				<Logo className="header__logo header__logo_dark" />
+				<Logo className="header__logo header__logo_light" style="light" />
+			</div>
+		</div>
+		<div class="header__group">
+			<div class="quick-access header__marketplaces" data-drawer="marketplaces">
+				<button class="quick-access__btn quick-access__btn_desc link" data-drawer-toggle="marketplaces">
+					<span class="link__label">Маркетплейсы</span>
+					<span class="link__icon icon-chevron-down"></span>
+				</button>
+				<button class="quick-access__btn quick-access__btn_mob link" data-drawer-toggle="marketplaces">
+					<span class="link__label link__label_hidden">Маркетплейсы</span>
+					<span class="link__icon icon-shopper  btn-icon"></span>
+				</button>
+				<div class="quick-access__popup" data-elem="drawer.panel">
+					{
+						[
+							{ href: "#", src: "img/marketplaces/ozon.svg", label: "Ozon" },
+							{ href: "#", src: "img/marketplaces/wb.svg", label: "Wildberries" },
+							{ href: "#", src: "img/marketplaces/jmarket.svg", label: "Я. Маркет" },
+						].map(({ href, src, label }) => <a href={href} class="quick-access__item" title={label}>
+							<img src={src} alt={label} class="quick-access__item-icon">
+							<div class="quick-access__item-label">{label}</div>
+						</a>)
+					}
+				</div>
+			</div>
+			<div class="quick-access quick-access_message-us header__message-us" data-drawer="message-us">
+				<button class="quick-access__btn quick-access__btn_desc link" data-drawer-toggle="message-us">
+					<span class="link__label">Написать нам</span>
+					<span class="link__icon icon-chevron-down"></span>
+				</button>
+				<button class="quick-access__btn quick-access__btn_mob link" data-drawer-toggle="message-us">
+					<span class="link__label link__label_hidden">Написать нам</span>
+					<span class="link__icon icon-message btn-icon"></span>
+				</button>
+				<div class="quick-access__popup" data-elem="drawer.panel">
+					{
+						[
+							{ href: "mailto:help@tdegregor.ru", label: "help@tdegregor.ru", icon: "icons/email.svg" },
+							{ href: "#", label: "Telegram", icon: "icons/telegram.svg" },
+							{ href: "#", label: "ВКонтакте", icon: "icons/vk.svg" },
+							{ href: "#", label: "WatsApp", icon: "icons/watsapp.svg" }
+						].map(({ href, icon, label }) => <a href={href} class="quick-access__item" title={label}>
+							<img src={icon} alt={label} class="quick-access__item-icon">
+							<div class="quick-access__item-label">{label}</div>
+						</a>)
+					}
+				</div>
+			</div>
+			<a href="tel:88001013330" class="link header__tel"><span class="link__label">8 800 101-33-30</span><span class="link__icon icon-phone btn-icon"></span></a>
+			<!-- 
+			<div class="header__separator"></div>
+			<a href="tel:88001013330" class="link header__tel"><span class="link__label">8 800 101-33-30</span><span class="link__icon icon-phone btn-icon"></span></a>
+			<a href="mailto:help@tdegregor.ru" class="link header__tel"><span class="link__label">help@tdegregor.ru</span><span class="link__icon icon-mailto btn-icon"></span></a>
+			<div class="header__separator"></div>
+			<Social className="header__social header__social_desc"></Social>
+			<Social className="header__social header__social_mob" mode="mob"></Social>
+			--!>
+		</div>
+	</div>
 </header>

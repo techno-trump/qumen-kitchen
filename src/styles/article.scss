@@ -1,0 +1,49 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.article {
+	padding: calc(var(--section-space) * 2) 0;
+	&__container {
+		display: grid;
+		grid-template-columns: auto auto;
+	}
+	&__widget-anchor-wrapper {
+		align-self: start;
+		display: grid;
+		align-items: end;
+		height: calc(var(--vhu, 1svh) * 100 - var(--section-space) * 4);
+	}
+	&__inner {
+		max-width: mi.rem(830);
+	}
+	&__header {
+	}
+	&__body {
+		display: grid;
+		gap: mi.rem(30);
+	}
+	&__title {
+		margin-bottom: mi.rem(30);
+	}
+	&__block {
+	}
+	&__block-title {
+		margin-bottom: mi.rem(20);
+	}
+	&__block-body {
+	}
+	&__list-title {
+	}
+}
+.article-ol {
+	counter-reset: item-number;
+	list-style: none;
+	display: grid;
+	gap: mi.rem(10);
+	&__item {
+		counter-increment: item-number;
+		&::before {
+			content: counter(item-number) ". ";
+		}
+	}
+}

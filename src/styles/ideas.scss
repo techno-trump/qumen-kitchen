@@ -1,0 +1,195 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.ideas {
+	&__container {
+		display: grid;
+		grid-template-columns: 4fr 8.27fr;
+		gap: mi.rem(22);
+		@media (max-width: config.$mbpT) {
+			grid-template-columns: 100%;
+			gap: mi.rem(30);
+			max-width: 100%;
+		}
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(20);
+		}
+	}
+	&__info {
+		display: grid;
+		align-content: space-between;
+		gap: mi.rem(40);
+		@media (min-width: (config.$mbpT + 1px)) {
+			max-width: 100%;
+		}
+		@media (max-width: config.$mbpT) {
+			gap: mi.rem(20);
+		}
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(14);
+		}
+	}
+	&__header {
+		justify-self: start;
+	}
+	&__title_desc {
+		@media (max-width: config.$mbpT) {
+			display: none;	
+		}
+	}
+	&__title_tablet {
+		@media (min-width: (config.$mbpT + 1px)) {
+			display: none;	
+		}
+	}
+	&__slider-area {
+		display: grid;
+		grid-template-columns: 100%;
+		border-radius: mi.rem(24);
+		overflow: hidden;
+		@media (max-width: config.$mbpT) {
+			border-radius: 0;
+		}
+		& > * {
+			grid-row: 1/span 1;
+			grid-column: 1/span 1;
+		}
+	}
+	&__slider {
+		position: relative;
+		z-index: 1;
+	}
+	&__slide {
+		flex: 0 0 100%;
+		--ratio: 60%;
+		background-color: var(--color-sf-light);
+		@media (max-width: config.$mbpT) {
+			--ratio: 88%;
+		}
+	}
+	&__slider-overlay {
+		position: relative;
+		z-index: 2;
+		display: grid;
+		grid-template-columns: 100%;
+		grid-template-rows: 1fr auto auto;
+		padding: mi.rem(30) mi.rem(20);
+		width: 100%;
+		pointer-events: none;
+		@media (min-width: (config.$mbpT + 1px)) {
+			max-width: 100%;
+		}
+		@media (max-width: config.$mbpT) {
+			padding: mi.rem(20) 0;
+		}
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(12) 0;
+		}
+	}
+	&__pagination {
+		color: var(--color-accent);
+		font-size: mi.rem(16);
+		margin-bottom: mi.rem(20);
+		& > * {
+			pointer-events: all;
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+	&__navigation {
+		display: grid;
+		grid-auto-flow: column;
+		justify-content: start;
+		gap: mi.rem(6);
+		margin-bottom: mi.rem(26);
+		@media (max-width: config.$mbpT) {
+			gap: mi.rem(12);
+			margin-bottom: mi.rem(20);
+		}
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(10);
+		}
+		& > * {
+			pointer-events: all;
+		}
+	}
+	&__thumbs {
+		display: flex;
+		width: 100%;
+		& > * {
+			flex: 0 1 0;
+			pointer-events: all;
+		}
+	}
+	&__thumb-wrap {
+		&:not(:last-child) {
+			margin-right: mi.rem(6);
+			@media (max-width: config.$mbpT) {
+				margin-right: mi.rem(8);
+			}
+		}
+	}
+	&__thumb {
+		flex: 1 1 auto;
+		display: inline-grid;
+		grid-auto-flow: column;
+		align-items: center;
+		gap: mi.rem(4);
+		border-radius: mi.rem(999);
+		padding: mi.rem(4);
+		padding-right: mi.rem(12);
+		background-color: var(--color-gray);
+		cursor: pointer;
+		transition: background-color var(--speed);
+		.swiper-slide-thumb-active & {
+			background-color: var(--color-accent-01);
+		}
+		@media (min-width: (config.$mbpMM + 1px)) and (max-width: config.$mbpT) {
+			padding: mi.rem(6);
+			padding-right: mi.rem(14);
+		}
+	}
+	
+	&__thumb-progress {
+		color: var(--color-dark-01);
+		width: mi.rem(22);
+		height: mi.rem(22);
+		transform: rotate(-90deg);
+		@media (min-width: (config.$mbpMM + 1px)) and (max-width: config.$mbpT) {
+			width: mi.rem(26);
+			height: mi.rem(26);
+		}
+	}
+	&__thumb-progress-current {
+		color: var(--color-accent);
+		stroke-dasharray: 56 56;
+		//stroke-dashoffset: calc(56 - 55 / 100 * var(--progress-nu, 0));
+		transition: stroke-dashoffset var(--speed) linear;
+	}
+	.swiper-slide-thumb-active &__thumb-progress {
+		color: var(--color-light);
+	}
+	&__thumb-label {
+		font-size: mi.rem(14);
+		white-space: nowrap;
+		transition: color var(--speed);
+		.swiper-slide-thumb-active & {
+			color: var(--color-accent);
+		}
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(16);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+	@media (any-hover: hover) {
+		&__thumb:hover {
+			background-color: var(--color-accent-01);
+		}
+		&__thumb:hover &__thumb-label {
+			color: var(--color-accent);
+		}
+	}
+}

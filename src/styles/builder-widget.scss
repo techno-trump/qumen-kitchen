@@ -1,0 +1,442 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+body {
+	position: relative;
+	z-index: 0;
+}
+.builder-widget {
+	--speed: 0.7s;
+	position: absolute;
+	top: var(--top);
+	right: var(--right);
+	bottom: var(--bottom);
+	left: 0;
+	z-index: 100;
+	color: var(--color-text-light);
+	pointer-events: none;
+	&_static {
+		@media (min-width: (config.$mbpT + 1px)) {
+			display: none;
+		}
+	}
+	@media (max-width: config.$mbpT) {
+		left: var(--left);
+	}
+	&__wrapper {
+		display: flex;
+		justify-content: end;
+		align-items: end;
+		position: sticky;
+		top: var(--top);
+	}
+	// :root[data-page="index"] &_collapsed &__wrapper, :root[data-page="index"]._scrolled &__wrapper {
+	// 	@media (min-width: (config.$mbpT + 1px)) {
+	// 		top: calc(var(--top) - mi.rem(20));
+	// 	}
+	// }
+	:root._initialized &__wrapper {
+		transition: top var(--speed);
+	}
+	&:not(&_collapsed) &__wrapper {
+		min-height: mi.rem(216);
+		@media (max-width: config.$mbpT) {
+			min-height: mi.rem(224);
+		}
+	}
+	// :root[data-page="index"]._scrolled &__wrapper {
+	// 	top: calc(var(--top)  + mi.rem(10));
+	// }
+	&__panel {
+		display: inline-grid;
+		grid-auto-flow: column;
+		border-radius: mi.rem(16);
+		overflow: hidden;
+		pointer-events: all;
+		min-width: 0;
+		@media (max-width: config.$mbpT) {
+			display: inline-flex;
+			white-space: nowrap;
+			flex: 0 0 100%;
+			justify-content: stretch;
+		}
+		@media (max-width: config.$mbpMM) {
+			border-radius: mi.rem(8);
+		}
+	}
+
+	:root._initialized &__panel {
+		transition: padding var(--speed), background-color var(--speed), flex-basis var(--speed), border-radius var(--speed);
+	}
+	:root._scrolled &__panel, &_collapsed &__panel {
+		padding: mi.rem(8);
+		background-color: var(--color-sf-bg-005);
+		backdrop-filter: blur(20px);
+		border-radius: mi.rem(16);
+		@media (max-width: config.$mbpT) {
+			flex-basis: mi.rem(180);
+			justify-content: stretch;
+		}
+		@media (max-width: config.$mbpMM) {
+			flex-basis: mi.rem(147);
+		}
+	}
+	&__panel._docking {
+		background-color: #FFFFFF0D!important;
+	}
+	&_static &__panel {
+		background: #FFFFFF0D!important;
+		backdrop-filter: blur(20px)!important;
+	}
+	&:not(._initialized, &_static) {
+		display: none;
+	}
+	
+	&__button {
+		width: mi.rem(260);
+		display: inline-flex;
+		flex-direction: column;
+		position: relative;
+		border-radius: mi.rem(16);
+		backdrop-filter: blur(40px);
+		line-height: 1.2;
+		overflow: hidden;
+		white-space: wrap;
+		
+		@media (max-width: config.$mbpT) {
+			width: calc(50% - mi.rem(4));
+		}
+		@media (max-width: config.$mbpMM) {
+			border-radius: mi.rem(8);
+		}
+		& > * {
+			grid-column: 1/span 1;
+			grid-row: 1/span 1;
+		}
+		&_project {
+			background-color: var(--color-text-light-02);
+			@media (max-width: config.$mbpT) {
+				margin-right: mi.rem(8);
+			}
+		}
+		&_builder {
+			background-color: var(--color-accent);
+		}
+	}
+	&__panel._docking &__button_project {
+		background-color: #1818184D!important;
+		backdrop-filter: blur(20px)!important;
+	}
+	:root._initialized &__button {
+		transition: width var(--speed), border-radius var(--speed), margin var(--speed), background-color var(--speed);
+	}
+	&_static &__button {
+		background: #18181880!important;
+		backdrop-filter: blur(20px)!important;
+	}
+	:root.is-mobile &__button_builder {
+		pointer-events: none;
+	}
+	:root._scrolled &__button, &_collapsed &__button {
+		border-radius: mi.rem(12);
+		width: mi.rem(164);
+		//max-width: mi.rem(164);
+		@media (max-width: config.$mbpMM) {
+			width: mi.rem(131);
+		}
+	}
+	:root._scrolled &__button_project, &_collapsed &__button_project {
+		background-color: #18181880;
+		@media (max-width: config.$mbpT) {
+			margin-right: 0;
+		}
+	}
+	:root._scrolled &__button_builder, &_collapsed &__button_builder {
+		@media (max-width: config.$mbpT) {
+			width: 0;
+		}
+	}
+	
+	&__separator {
+		display: inline-block;
+		align-self: center;
+		width: mi.rem(4);
+		height: mi.rem(4);
+		margin: 0 mi.rem(6);
+		border-radius: 50%;
+		background-color: var(--color-text-dark-03);
+		opacity: 0;
+		visibility: hidden;
+		
+		@media (max-width: config.$mbpT) {
+			display: none;
+		}
+	}
+	:root._initialized &__separator {
+		transition: visibility var(--speed), opacity var(--speed), margin var(--speed);
+	}
+	:root._scrolled &__separator, &_collapsed &__separator {
+		opacity: 1;
+		visibility: visible;
+		margin: 0 mi.rem(10);
+	}
+	&__button-inner {
+		flex: 1 1 auto;
+		padding: mi.rem(17) mi.rem(20);
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(8) mi.rem(10);
+		}
+	}
+	:root._initialized &__button-inner {
+		transition: padding var(--speed);
+	}
+	:root.is-mobile &__button_builder &__button-inner {
+		@media (min-width: (config.$mbpT + 1px)) {
+			padding: mi.rem(17) mi.rem(20) mi.rem(7);
+		}
+	}
+	&__button_builder &__button-inner {
+		@media (max-width: config.$mbpT) {
+			padding: mi.rem(17) mi.rem(20) mi.rem(7);
+		}
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(8) mi.rem(10) mi.rem(5);
+		}
+	}
+	
+	:root._scrolled &__button &__button-inner, &_collapsed &__button &__button-inner {
+		padding: mi.rem(10) mi.rem(15);
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(9) mi.rem(15);
+		}
+	}
+	&__header {
+		display: flex;
+		align-items: center;
+		margin-bottom: mi.rem(8);
+		min-height: mi.rem(24);
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(4);
+		}
+	}
+	:root._initialized &__header {
+		transition: margin var(--speed);
+	}
+	:root._scrolled &__header, &_collapsed &__header {
+		margin-bottom: 0;
+	}
+	&__header-icon {
+		width: mi.rem(22);
+		font-size: mi.rem(22);
+		margin-right: mi.rem(12);
+		opacity: 1;
+	}
+	:root._initialized &__header-icon {
+		transition: width var(--speed), margin var(--speed), opacity var(--speed);
+	}
+	:root:not(._scrolled) &:not(&_collapsed) &__header-icon {
+		opacity: 0;
+		margin-right: 0;
+		width: 0;
+	}
+	&__label {
+		font-size: mi.rem(20);
+		white-space: nowrap;
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(24);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(16);
+		}
+	}
+	:root._initialized &__label {
+		transition: font-size var(--speed);
+	}
+	:root._initialized &__header-icon {
+		transition: font-size var(--speed), transform var(--speed);
+	}
+	:root._scrolled &__label, &_collapsed &__label {
+		font-size: mi.rem(16);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+	:root._scrolled &__button_project &__label, &_collapsed &__button_project &__label {
+		transform: translateX(mi.rem(10));
+		@media (max-width: config.$mbpMM) {
+			transform: translateX(mi.rem(6));
+		}
+	}
+	&__body {
+		opacity: 1;
+		height: var(--inner-height);
+		font-size: mi.rem(14);
+		
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(16);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(10);
+		}
+	}
+	:root._initialized &__body {
+		transition: height var(--speed), opacity var(--speed);
+	}
+	&__body-inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-width: mi.rem(185);
+		@media (max-width: config.$mbpMM) {
+			min-height: mi.rem(92);
+			min-width: mi.rem(110);
+		}
+	}
+	:root._scrolled &__body, _collapsed &__body {
+		height: 0;
+		opacity: 0;
+	}
+	&__available {
+		align-self: center;
+		display: grid;
+		grid-auto-flow: column;
+		align-items: center;
+		gap: mi.rem(12);
+		background-color: #0000004D;
+		backdrop-filter: blur(10px);
+		padding: mi.rem(8) mi.rem(10) mi.rem(8) mi.rem(16);
+		border-radius: mi.rem(8);
+		margin: 0 mi.rem(-12);
+		min-width: mi.rem(244);
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(8);
+			padding: mi.rem(4) mi.rem(5);
+			min-width: mi.rem(130);
+			margin: 0 mi.rem(-6);
+			border-radius: mi.rem(4);
+		}
+	}
+	&__description {
+		text-align: left;
+		margin-bottom: mi.rem(56);
+		width: mi.rem(185);
+		@media (max-width: config.$mbpT) {
+			width: mi.rem(210);
+		}
+		@media (max-width: config.$mbpMM) {
+			max-width: mi.rem(110);
+		}
+	}
+	:root.is-mobile &__button_builder &__description {
+		@media (min-width: (config.$mbpT + 1px)) {
+			margin-bottom: mi.rem(33);
+		}
+	}
+	&__button_builder &__description {
+		@media (max-width: config.$mbpT) {
+			margin-bottom: mi.rem(33);
+		}
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(15);
+		}
+	}
+	:root.is-mobile &__button_project &__description {
+		@media (min-width: (config.$mbpT + 1px)) {
+			margin-bottom: mi.rem(51);
+		}
+	}
+	&__button_project &__description {
+		@media (max-width: config.$mbpT) {
+			margin-bottom: mi.rem(51);
+		}
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(24);
+		}
+	}
+	&__available-icon {
+		font-size: mi.rem(32);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(14);
+		}
+	}
+	&__available-text {
+		font-size: mi.rem(14);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(8);
+		}
+	}
+	&__thumb {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: mi.rem(26);
+		height: mi.rem(26);
+		border-radius: 50%;
+		background-color: var(--color-sf-light);
+		@media (max-width: config.$mbpMM) {
+			width: mi.rem(14);
+			height: mi.rem(14);
+		}
+	}
+	:root.is-mobile &__button_builder &__thumb {
+		display: none;
+	}
+	@media (max-width: config.$mbpT) {
+		&__button_builder &__thumb {
+			display: none;
+		}
+	}
+	:root:not(.is-mobile) &__available {
+		@media (min-width: (config.$mbpT + 1px)) {
+			display: none;
+		}
+	}
+	&__thumb-icon {
+		position: relative;
+		left: 0.1em;
+		color: var(--color-accent);
+		font-size: mi.rem(10);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(5);
+		}
+	}
+	&__bg {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+		left: 0;
+		top: 0;
+		z-index: -1;
+		padding: mi.rem(17);
+		padding-top: mi.rem(90);
+		padding-left: mi.rem(95);
+		width: 100%;
+		min-height: 100%;
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(8);
+		}
+	}
+	&__button_project &__bg {
+		@media (max-width: config.$mbpT) {
+			padding-top: mi.rem(117);
+			padding-left: mi.rem(122);
+		}
+		@media (max-width: config.$mbpMM) {
+			padding-top: mi.rem(79);
+			padding-left: mi.rem(59);
+		}
+	}
+	&__button_builder &__bg {
+		padding-left: mi.rem(114);
+		@media (max-width: config.$mbpMM) {
+			padding-top: mi.rem(80);
+			padding-left: mi.rem(69);
+		}
+	}
+	
+	&__bg-img {
+		flex: 1 1 auto;
+		height: auto;
+		object-fit: contain;
+	}
+}

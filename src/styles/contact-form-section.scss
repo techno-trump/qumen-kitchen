@@ -1,0 +1,39 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.contact-form-section {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	min-height: calc(100 * var(--vhu, 1vh));
+	min-height: calc(100 * var(--vhu, 1svh));
+	overflow: hidden;
+	margin-top: var(--section-space);
+	@media (max-width: config.$mbpT) {
+		min-height: 0;
+		background-color: var(--color-sf-light);
+	}
+	&__bg {
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 120%;
+		object-fit: cover;
+		@media (max-width: config.$mbpT) {
+			display: none;
+		}
+	}
+	&__container {
+		flex: 1 1 auto;
+		display: flex;
+		align-items: center;
+		@media (max-width: config.$mbpT) {
+			max-width: calc(min(100%, 1920px) - var(--container-space) * 4);
+		}
+	}
+	&__form {
+		max-width: mi.rem(560);
+	}
+}

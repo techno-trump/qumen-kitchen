@@ -1,4 +1,4 @@
-import throttle from "lodash.throttle";
+import debounce from "lodash.debounce";
 
 const createObserver = () => {
 	const mapByInner = new Map();
@@ -11,7 +11,7 @@ const createObserver = () => {
 			updateHeight(mapByInner.get(target), target);
 		});
 	};
-	const resizeObserver = new ResizeObserver(throttle(handleResize, 10));
+	const resizeObserver = new ResizeObserver(handleResize);
 	return {
 		observe: (instance, inner) => {
 			mapByInner.set(inner, instance);
@@ -25,10 +25,10 @@ const resizeObserver = createObserver();
 export class Disclosure {
 	constructor(root) {
 		this.dom = { root };
-		this.dom.inner = this.dom.root.querySelector(`[data-elem*="disclosure.inner"]`);
+		this.dom.inner = this.dom.root.querySelector(`[data-elem~="disclosure.inner"]`);
 		this.dom.toggleBtns = this.findToggleButtons();
-		//Array.from(this.dom.root.querySelectorAll(`[data-elem*="disclosure.toggle"]`));
-		if (this.dom.root.matches(`[data-elem*="disclosure.toggle"]`)) {
+		//Array.from(this.dom.root.querySelectorAll(`[data-elem~="disclosure.toggle"]`));
+		if (this.dom.root.matches(`[data-elem~="disclosure.toggle"]`)) {
 			this.dom.toggleBtns.push(this.dom.root);
 		}
 		this.dom.toggleBtns.forEach(elem => elem.addEventListener("click", () => this.toggle(undefined, "trigger-click")));
@@ -40,8 +40,8 @@ export class Disclosure {
 		let innerDepth = 0; // Счётчик вложенности disclosure.inner
 
 		const traverse = (elem) => {
-			if (elem.matches(`[data-component*=":disclosure:"]`)) innerDepth++;
-			if (elem.matches(`[data-elem*="disclosure.toggle"]`) && innerDepth < 1) result.push(elem);
+			if (elem.matches(`[data-component~="disclosure"], [data-component~=":disclosure:"], [data-component~="manual-disclosure"]`)) innerDepth++;
+			if (elem.matches(`[data-elem~="disclosure.toggle"]`) && innerDepth < 1) result.push(elem);
 
 			// Рекурсивно обходим дочерние элементы
 			Array.from(elem.children).forEach(traverse);
@@ -56,21 +56,21 @@ export class Disclosure {
 		if (next !== undefined && next !== null) {
 			next ? this.open(reason) : this.close(reason);
 		} else {
-			this.dom.root.classList.contains("_open") ? this.close(reason) : this.open(reason);
+			this.dom.root.classList.contains("disclosure_open") ? this.close(reason) : this.open(reason);
 		}
 	}
 	open(reason) {
-		this.dom.root.classList.add("_open");
+		this.dom.root.classList.add("disclosure_open");
 		this.dom.toggleBtns.forEach(elem => elem.classList.add("_active"));
 		this.dom.root.dispatchEvent(new CustomEvent("disclosure.open", { detail: { self: this, reason }, bubbles: true }));
 	}
 	close(reason) {
-		this.dom.root.classList.remove("_open");
+		this.dom.root.classList.remove("disclosure_open");
 		this.dom.toggleBtns.forEach(elem => elem.classList.remove("_active"));
 		this.dom.root.dispatchEvent(new CustomEvent("disclosure.close", { detail: { self: this, reason }, bubbles: true }));
 	}
 }
 export default function initDisclosures() {
-	const elems = document.querySelectorAll(`[data-component*=":disclosure:"]`);
+	const elems = document.querySelectorAll(`[data-component~="disclosure"], [data-component*=":disclosure:"]`);
 	elems.forEach((elem) => new Disclosure(elem));
 }

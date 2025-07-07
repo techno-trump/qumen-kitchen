@@ -1,4 +1,5 @@
 @use "./config.scss" as config;
+@use "./mixins.scss" as mi;
 
 .tg-section-title {
 	font-size: 32px;
@@ -11,4 +12,62 @@
 .tg-section-regular {
 	font-size: 21px;
 	line-height: 1.8;
+}
+.tg-s3 {
+	font-size: 1rem;
+	line-height: 1.2;
+}
+.tg-s1 {
+	font-size: mi.rem(28);
+	line-height: 1.2;
+	@media (max-width: config.$mbpT) {
+		font-size: mi.rem(32);
+	}
+	@media (max-width: config.$mbpMM) {
+		font-size: mi.rem(16);
+	}
+}
+.tg-h1 {
+	font-size: mi.rem(64);
+	line-height: 1;
+	@media (max-width: config.$mbpT) {
+		font-size: mi.rem(54);
+	}
+	@media (max-width: config.$mbpMM) {
+		font-size: mi.rem(32);
+	}
+}
+.tg-h2 {
+	font-size: mi.rem(42);
+	line-height: 1;
+	@media (max-width: config.$mbpMM) {
+		font-size: mi.rem(24);
+	}
+}
+.tg-h3 {
+	font-size: mi.rem(32);
+	line-height: 1;
+	@media (max-width: config.$mbpT) {
+		font-size: mi.rem(32);
+	}
+	@media (max-width: config.$mbpMM) {
+		font-size: mi.rem(20);
+	}
+}
+.tg-p1 {
+	font-size: mi.rem(20);
+	line-height: 1.3;
+	@media (max-width: config.$mbpMM) {
+		font-size: mi.rem(16);
+	}
+}
+.tg-p2 {
+	font-size: mi.rem(16);
+	line-height: 1.3;
+	@media (max-width: config.$mbpT) {
+		font-size: mi.rem(18);
+	}
+	@media (max-width: config.$mbpMM) {
+		font-size: mi.rem(12);
+	}
 }

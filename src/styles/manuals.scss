@@ -1,0 +1,116 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.manuals-video {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+.manuals {
+	overflow: hidden;
+	&__title {
+		margin-bottom: mi.rem(46);
+		@media (max-width: config.$mbpT) {
+			margin-bottom: mi.rem(30);
+		}
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(20);
+		}
+	}
+	&__slider-wrapper {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+	}
+	&__card {
+		--ratio: 87.5%;
+		@media (max-width: config.$mbpT) {
+			--ratio: 65.22%;	
+		}
+	}
+	&__card-frame {
+		position: absolute;
+	}
+	&__card-view-wrap {
+		display: grid;
+		align-items: center;
+		& > * {
+			grid-row: 1/span 1;
+			grid-column: 1/span 1;
+		}
+	}
+	&__card-view {
+		border-radius: mi.rem(16);
+		overflow: hidden;
+		margin-bottom: mi.rem(16);
+		@media (max-width: config.$mbpT) {
+			margin-bottom: mi.rem(20);
+		}
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(12);
+		}
+		& img {
+			will-change: transform;
+			transition: transform var(--speed);
+			pointer-events: none;
+		}
+	}
+	@media (any-hover: hover) {
+		&__card:hover &__card-view img {
+			transform: scale(1.1);
+		}
+	}
+	&__duration {
+		position: absolute;
+		z-index: 1;
+		right: mi.rem(20);
+		top: mi.rem(20);
+		color: var(--color-text-light);
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(18);
+		}
+		@media (max-width: config.$mbpMM) {
+			right: mi.rem(18);
+			top: mi.rem(18);
+			font-size: mi.rem(12);
+		}
+	}
+	&__card-title {
+		font-size: mi.rem(20);
+		margin-bottom: mi.rem(10);
+		transition: color var(--speed);
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(24);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(16);
+			margin-bottom: mi.rem(6);
+		}
+	}
+	&__play-btn {
+		display: grid;
+		align-items: center;
+		justify-content: center;
+		justify-self: center;
+		position: relative;
+		z-index: 2;
+		color: var(--color-text-light);
+		width: mi.rem(40);
+		height: mi.rem(40);
+		background-color: var(--color-text-light-02);
+		backdrop-filter: blur(20px);
+		border-radius: mi.rem(10);
+		transition: background-color var(--speed);
+	}
+	@media (any-hover: hover) {
+		&__card:hover &__play-btn {
+			background-color: var(--color-accent);
+		}
+		&__card:hover &__card-title {
+			color: var(--color-accent);
+		}
+	}
+}

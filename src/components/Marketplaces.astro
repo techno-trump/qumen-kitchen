@@ -1,0 +1,19 @@
+---
+	interface Props {
+		className?: string;
+	}
+
+	const { className } = Astro.props;
+---
+<div class:list={["marketplaces", className]}>
+	{
+		[
+			{ href: "https://www.ozon.ru/seller/egregor-kyumen-2512784/products/?miniapp=seller_2512784", src: "img/marketplaces/ozon-mono.svg", label: "Ozon" },
+			{ href: "https://www.wildberries.ru/seller/250000361", src: "img/marketplaces/wb-mono.svg", label: "Wildberries" },
+			{ href: "#", src: "img/marketplaces/jmarket-mono.svg", label: "Я. Маркет" },
+		].map(({ href, src, label }) => <a href={href} class="marketplaces__item link" target="_blank" title={label}>
+			<img src={src} alt={label} class="marketplaces__item-icon link__icon">
+			<div class="link__label link__label_hidden">{label}</div>
+		</a>)
+	}
+</div>

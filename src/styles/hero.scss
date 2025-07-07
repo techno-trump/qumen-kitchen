@@ -1,0 +1,101 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.hero {
+	position: sticky;
+	z-index: 0;
+	top: 0;
+	display: grid;
+	&__overlay {
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		min-height: 101%;
+		opacity: 0;
+		background-color: var(--color-sf-bg-inverted);
+	}
+	& > * {
+		grid-row: 1/span 1;
+		grid-column: 1/span 1;
+	}
+	&__bg {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		left: 0;
+		top: 0;
+		width: 100%;
+		min-height: 110%;
+		z-index: 0;
+		--ratio: 73.2%;
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+		}
+		&:after {
+			z-index: 1;
+			top: calc(62 * var(--vhu, 1vh));
+			top: calc(62 * var(--vhu, 1svh));
+			left: 0;
+			width: 100%;
+			height: mi.rem(525);
+			background: linear-gradient(180deg, rgba(241, 239, 235, 0) 0%, #F1EFEB 81.07%);
+			backdrop-filter: blur(0.7114583253860474px);
+			@media (max-width: config.$mbpT) {
+				top: calc(56 * var(--vhu, 1vh));
+				top: calc(56 * var(--vhu, 1svh));
+				height: mi.rem(420);
+			}
+			@media (max-width: config.$mbpMM) {
+				top: calc(65 * var(--vhu, 1vh));
+				top: calc(65 * var(--vhu, 1svh));
+				height: mi.rem(360);
+			}
+		}
+		&:before {
+			z-index: 1;
+			bottom: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background: radial-gradient(66.37% 66.37% at 50% 33.63%, #FFFFFF 0%, #737373 85.03%);
+			mix-blend-mode: multiply;
+		}
+	}
+	&__bg-img-wrap {
+		flex: 1 1 auto;
+	}
+	&__container {
+		align-self: start;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-content: end;
+		justify-content: space-between;
+		color: var(--color-text-light);
+		//min-height: calc(var(--vhu, 1vh) * 100);
+		//min-height: 100svh;
+		min-height: calc(var(--vhu, 1vh) * 100);
+		min-height: 100dvh;
+		padding: mi.rem(114) 0 mi.rem(50);
+		@media (max-width: config.$mbpT) {
+			grid-template-columns: 1fr;
+			align-content: space-between;
+			padding: mi.rem(114) 0 mi.rem(32);
+		}
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(108) 0 mi.rem(20);
+		}
+	}
+	&__widget-anchor {
+		position: relative;
+		z-index: 100;
+		align-self: end;
+		min-height: mi.rem(180);
+		@media (max-width: config.$mbpT) {
+			min-height: mi.rem(220);
+		}
+	}
+}

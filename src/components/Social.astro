@@ -1,0 +1,23 @@
+---
+	interface Props {
+		className?: string;
+		mode?: string;
+	}
+
+	const { className, mode = "desc" } = Astro.props;
+---
+<div class:list={["social", className]}>
+	{
+		mode == "desc" ? 
+			<a href="#" target="_blank" class:list={["btn btn_primary btn_square btn_sm"]}>
+				<div class="btn__icon icon-telegram"></div>
+				<div class="btn__label btn__label_hidden">Telegram</div>
+			</a>
+			:
+			<a href="#" target="_blank" class:list={["link"]}>
+				<div class="link__icon icon-telegram btn-icon"></div>
+				<div class="link__label link__label_hidden">Telegram</div>
+			</a>
+	}
+	
+</div>

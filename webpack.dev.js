@@ -52,6 +52,16 @@ const config = {
 						},
 					},
 					{
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions: {
+								plugins: [
+									['autoprefixer', {}],
+								],
+							},
+						},
+					},
+					{
 						loader: 'sass-loader',
 						options: {
 							sourceMap: true,

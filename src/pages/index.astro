@@ -1,23 +1,767 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { addLeadingZero } from "../scripts/utils.js";
+const aboutSlides = [
+	{
+		type: "video",
+		src: "video.mp4", // "img/about-product/01-2200.webp"
+		title: "Широкий<br>выбор модулей",
+		desc: "Напольные, верхние, угловые, пеналы; также модули под мойку и под встраиваемую технику."
+	},
+	{
+		type: "img",
+		src: "img/about-product/01-2200.webp",
+		title: "До 5 вариантов<br>наполнений модулей",
+		desc: "В каждый модуль можно поставить полки, выдвижные ящики"
+	},
+	{
+		type: "video",
+		src: "video.mp4",
+		title: "Простая замена<br>любого элемента",
+		desc: "Для всех вариантов наполнений уже готовы все отверстия для монтажа"
+	},
+	{
+		type: "video",
+		src: "video.mp4",
+		title: "Общепринятые<br>стандарты размеров",
+		desc: "Модули шириной 40, 45, 60, 80 см и высотой 72 см: купите наши фасады для своей нынешней кухни."
+	},
+	{
+		type: "video",
+		src: "video.mp4",
+		title: "Поддержка<br>любого вида кухни",
+		desc: "Возможно собрать прямую, угловую,  П-образную, Т-образную и добавить любой остров."
+	},
+];
+
+const projects = [
+		{
+			active: true,
+			src: "img/projects/project-01", // "img/about-product/01-2200.webp"
+			meta: {
+				title: "Прямая кухня",
+				sizes: [{ title: "Размеры системы, м", size:	"3 × 2,14 × 0,6" }],
+				composition: "Прямая",
+				colorName: "Веллюто Капучино",
+				colorSrc: "img/projects/colors/01.svg",
+				sets: [
+					{
+						title: "Состав системы, шт.",
+						set: [ { title: "Напольный ящик", number: 5 }, { title: "Верхний ящик", number: 5 }, { title: "Пенал", number: 1 } ],
+					},
+					{
+						title: "Состав острова, шт.",
+						set: [ { title: "Напольный ящик", number: 3 } ],
+					},
+				],
+				prices: [
+					{ title: "Цена системы", price: "55 254" }
+				]
+			},
+		},
+		{
+			src: "img/projects/project-02", // "img/about-product/01-2200.webp"
+			meta: {
+				title: "Прямая кухня",
+				sizes: [{ title: "Размеры системы, м", size:	"3 × 2,14 × 0,6" }],
+				composition: "Прямая",
+				colorName: "Веллюто Капучино",
+				colorSrc: "img/projects/colors/02.svg",
+				sets: [
+					{
+						title: "Состав системы, шт.",
+						set: [ { title: "Напольный ящик", number: 8 }, { title: "Верхний ящик", number: 5 }, { title: "Пенал", number: 1 } ],
+					}
+				],
+				prices: [
+					{ title: "Цена системы", price: "72 309" }
+				]
+			},
+		},
+		{
+			src: "img/projects/project-03", // "img/about-product/01-2200.webp"
+			meta: {
+				title: "Угловая кухня с островом",
+				sizes: [{ title: "Размеры системы, м", size:	"3,25 × 2,8 × 2,14 × 0,6 " }, { title: "Размеры острова, м", size:	"1,6 × 0,82 × 0,6" }],
+				composition: "Угловая с островом",
+				colorName: "Графит",
+				colorSrc: "img/projects/colors/03.svg",
+				sets: [
+					{
+						title: "Состав системы, шт.",
+						set: [ { title: "Напольный ящик", number: 8 }, { title: "Верхний ящик", number: 6 }, { title: "Пенал", number: 2 } ],
+					},
+					{
+						title: "Состав острова, шт.",
+						set: [ { title: "Напольный ящик", number: 3 } ],
+					},
+				],
+				prices: [
+					{ title: "Цена без острова", price: "87 184" },
+					{ title: "Цена с островом", price: "114 111" }
+				]
+			},
+		},
+		
+];
+
+const ideas = [
+	{ title: "Модули", src: "video.mp4" },
+	{ title: "Наполнение", src: "video.mp4" },
+	{ title: "Готовая кухня", src: "video.mp4" },
+	{ title: "Конструктор", src: "video.mp4" },
+	{ title: "Спецификация", src: "video.mp4" },
+	{ title: "Маркетплейсы", src: "video.mp4" }
+];
+const manuals = [
+	{
+		videoSrc: `https://vkvideo.ru/video_ext.php?oid=-226212757&id=456239213&hd=2`,
+		posterSrc: "img/manuals/poster-01.webp",
+		title: "Как замерить помещение",
+		duration: "2:15",
+		text: "Возьмите рулетку и последовательно измерьте все стены, записывая длину, ширину и высоту каждой поверхности."
+	},
+	{
+		videoSrc: `https://vkvideo.ru/video_ext.php?oid=-226212757&id=456239215&hd=2`,
+		posterSrc: "img/manuals/poster-02.webp",
+		title: "Как спланировать кухню",
+		duration: "2:15",
+		text: "Начните с определения основных рабочих зон и расстановки крупной техники, соблюдая правило рабочего треугольника."
+	},
+	{
+		videoSrc: `https://vkvideo.ru/video_ext.php?oid=-226212757&id=456239214&hd=2`,
+		posterSrc: "img/manuals/poster-03.webp",
+		title: "Как пользоваться конструктором",
+		duration: "2:15",
+		text: "Возьмите рулетку и последовательно измерьте все стены, записывая длину, ширину и высоту каждой поверхности."
+	},
+]
+const faq = [
+	{ question: "Где купить?", answer: "Вы можете приобрести наши кухонные системы на маркетплейсах Wildberries, Ozon и Яндекс.Маркет." },
+	{ question: "Как оплатить?", answer: "Вы можете приобрести наши кухонные системы на маркетплейсах Wildberries, Ozon и Яндекс.Маркет." },
+	{ question: "Как осуществляется доставка?", answer: "Вы можете приобрести наши кухонные системы на маркетплейсах Wildberries, Ozon и Яндекс.Маркет." },
+	{ question: "Что нужно для бесплатного дизайн-проекта?", answer: "Вы можете приобрести наши кухонные системы на маркетплейсах Wildberries, Ozon и Яндекс.Маркет." },
+	{ question: "Где можно посмотреть образцы?", answer: "Вы можете приобрести наши кухонные системы на маркетплейсах Wildberries, Ozon и Яндекс.Маркет." },
+	{ question: "Какая гарантия на кухонные системы?", answer: "Вы можете приобрести наши кухонные системы на маркетплейсах Wildberries, Ozon и Яндекс.Маркет." },
+	{ question: "Как осуществляется сборка?", answer: "Вы можете приобрести наши кухонные системы на маркетплейсах Wildberries, Ozon и Яндекс.Маркет." },
+]
 ---
 
-<Layout title="Boilerplate" description="Index page" empty={true}>
-	<div class="container">
-		<div class="pages">
-			<h3>Pages</h3>
-			<ol>
-				<li><a href="./home.html" class="link">Home</a></li>
-			</ol>
+<Layout title="Boilerplate" description="Home page" page="index">
+	<div class="builder-widget" data-component="builder-widget">
+		<div class="builder-widget__wrapper">
+			<div class="builder-widget__panel" data-elem="builder-widget.panel">
+				<!-- data-drawer-toggle="design-product-form" -->
+			<button data-drawer-toggle="design-product-form" type="button" class="builder-widget__button builder-widget__button_project">
+				<div class="builder-widget__button-inner">
+					<div class="builder-widget__header">
+						<div class="builder-widget__label">Дизайн-проект</div>
+					</div>
+					<div class="builder-widget__body" data-component="disclosure">
+						<div class="builder-widget__body-inner" data-elem="disclosure.inner">
+							<div class="builder-widget__description">Напишите нам, и&nbsp;мы&nbsp;разработаем кухню за вас и&nbsp;пришлем&nbsp;список для&nbsp;заказа</div>
+							<div class="builder-widget__thumb">
+								<div class="builder-widget__thumb-icon icon-chevron-right"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="builder-widget__bg">
+					<img src="img/widget-bg-01.svg" alt="Фон виджета Дизайн проект/конструктор" class="builder-widget__bg-img">
+				</div>
+			</button>
+			<div class="builder-widget__separator"></div>
+			<a href="builder.html" class="builder-widget__button builder-widget__button_builder">
+				<div class="builder-widget__button-inner">
+					<div class="builder-widget__header">
+						<div class="builder-widget__header-icon icon-builder"></div>
+						<div class="builder-widget__label">Конструктор</div>
+					</div>
+					<div class="builder-widget__body" data-component="disclosure">
+						<div class="builder-widget__body-inner" data-elem="disclosure.inner">
+							<div class="builder-widget__description">Создайте проект своими руками в конструкторе и&nbsp;получите список для&nbsp;заказа</div>
+							<div class="builder-widget__thumb">
+								<div class="builder-widget__thumb-icon icon-chevron-right"></div>
+							</div>
+							<div class="builder-widget__available">
+								<div class="builder-widget__available-icon icon-pc"></div>
+								<div class="builder-widget__available-text">Доступен на настольных компьютерах</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="builder-widget__bg">
+					<img src="img/widget-bg-02.svg" alt="Фон виджета Дизайн проект/конструктор" class="builder-widget__bg-img">
+				</div>
+			</a>
+		</div>
 		</div>
 	</div>
+	<div>
+		<section class="hero" data-theme="dark" data-elem="builder-widget.main">
+			<div class="hero__bg">
+				<div class="ratio-wrap hero__bg-img-wrap">
+					<picture>
+						<source media="(min-width: 901px)" srcset="img/hero-2732.webp" />
+						<source media="(max-width: 900px)" srcset="img/hero-1024.webp" />
+						<img src="img/hero-1024.webp" alt="Hero block background" class="ratio-wrap__item" loading="lazy">
+					</picture>
+				</div>
+				<div class="hero__overlay"></div>
+			</div>
+			<div class="container hero__container">
+				<h1 class="hero__title tg-h1" data-component="text-reveal" data-immediate="init">
+					<div class="line">Кьюмен.</div>
+					<div class="line">Воплотите кухню</div>
+					<div class="line">своей мечты</div>
+				</h1>
+				<div class="hero__widget-anchor" data-elem="builder-widget.top-anchor">
+				</div>
+			</div>
+			
+		</section>
+		<section id="advantages" class="about-product section-space-bottom" data-component="about-product" data-theme="dark">
+			<div class="about-product__container">
+				<div class="container container_wide about-product__slider swiper" data-elem="about-product.slider">
+					<div class="swiper-wrapper">
+						{
+							aboutSlides.map(({ src, type }) => <div class="about-product__slide swiper-slide ratio-wrap">
+																							{
+																								type === "img" ? 
+																										<picture>
+																											<img src={src} alt="Product image" class="ratio-wrap__item" loading="lazy"/>
+																										</picture> :
+																										<video playsinline muted="muted" preload="meta" src={src} class="ratio-wrap__item"></video>
+																							}
+																						</div>)
+						}
+					</div>
+				</div>
+				<div class="container container_wide about-product__header">
+					<div class="about-product__title about-product__title_desc" data-component="text-reveal">
+						<div class="line">Кьюмен — это</div>
+						<div class="line">модульная кухня,</div>
+						<div class="line">которая подстраивается</div>
+						<div class="line">под ваши желания</div>
+					</div>
+					<div class="about-product__title about-product__title_tablet" data-component="text-reveal">
+						<div class="line">Кьюмен — это модульная кухня,</div>
+						<div class="line">которая подстраивается</div>
+						<div class="line">под ваши желания</div>
+					</div>
+				</div>
+				<div class="container container_wide about-product__navigation">
+					<button class="btn btn_slider-nav" data-elem="about-product.prev">
+						<div class="btn__label btn__label_hidden">Предидущий слайд</div>
+						<div class="btn__icon icon-arrow-left"></div>
+					</button>
+					<button class="btn btn_slider-nav" data-elem="about-product.next">
+						<div class="btn__label btn__label_hidden">Следующий слайд</div>
+						<div class="btn__icon icon-arrow-right"></div>
+					</button>
+				</div>
+				<div class="container container_wide about-product__thumbs swiper" data-elem="about-product.thumbs">
+					<div class="swiper-wrapper about-product__thumbs-wrapper">
+						{
+							aboutSlides.map(({ title, desc }) => 	<div class="about-product__thumb swiper-slide" data-elem="about-product.thumb">
+																											<div class="about-product__thumb-title" set:html={title}></div>
+																											<div class="about-product__thumb-bar"></div>
+																											<div class="about-product__thumb-desc" set:html={desc}></div>
+																										</div>)
+						}
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<section id="projects" class="projects section-space" data-theme="dark">
+		<div class="container container_wide projects__container" data-component="projects">
+			<div class="projects__slider swiper" data-elem="projects.slider">
+				<div class="swiper-wrapper">
+					{
+						projects.map(({ src }) => <div class="projects__slide swiper-slide">
+																				<div class="projects__slide-inner ratio-wrap">
+																					<picture>
+																						<source media="(min-width: 901px)" srcset={`${src}-2x.webp`} />
+																						<source media="(max-width: 900px)" srcset={`${src}-0.75x.webp`} />
+																						<img src={`${src}-2x.webp`} alt="Product image" class="ratio-wrap__item" loading="lazy"/>
+																					</picture>
+																					<a href={`${src}-2x.webp`} data-fslightbox="projects" class="projects__slide-btn">
+																						<div class="projects__slide-btn-icon icon-enlarge"></div>
+																					</a>
+																				</div>
+																			</div>)
+					}
+				</div>
+			</div>
+			<div class="projects__header tg-h2">
+				<div class="projects__title projects__title_desc" data-component="text-reveal">
+					<div class="line">Готовые проекты кухонь</div>
+				</div>
+				<div class="projects__title projects__title_tablet" data-component="text-reveal">
+					<div class="line">Готовые</div>
+					<div class="line">проекты кухонь</div>
+				</div>
+				<div class="projects__description tg-p1" data-component="text-block-reveal">
+					Мы собрали для вас варианты готовых кухонь в конструкторе, чтобы  вы могли выбрать понравившийся дизайн и заказать его в один клик без лишних хлопот.
+				</div>
+			</div>
+			<div class="projects__info" data-elem="projects.info">
+				<div class="projects__info-panel disclosure_open" data-component="disclosure">
+					<div class="projects__info-panel-wrapper" data-elem="disclosure.inner">
+						<div class="projects__info-panel-inner">
+							{
+								projects.map(({ meta, active }) => 	<div class:list={["projects__info-item", active && "projects__info-item_active"]} data-elem="projects.info.item">
+																							<div class="projects__info-item-title">{meta.title}</div>
+																							<div class="projects__info-item-row projects__info-item-row_size">
+																								{
+																									meta.sizes.map(({ title, size }) => <div class="project-info-block">
+																										<div class="project-info-block__title">{title}</div>
+																										<div class="project-info-block__body project-info-block__body_size">{size}</div>
+																									</div>)
+																								}
+																							</div>
+																							<div class="projects__info-item-chars project-info-chars" data-elem="projects.info.chars" data-component="manual-disclosure">
+																								<div class="project-info-chars__toggle link" data-elem="disclosure.toggle">
+																									<span class="link__label">Характеристики</span>
+																									<span class="link__icon icon-chevron-down"></span>
+																								</div>
+																								<div class="project-info-chars__body">
+																									<div class="projects__info-item-row projects__info-item-row_composition">
+																										<div class="project-info-block">
+																											<div class="project-info-block__title">Компоновка</div>
+																											<div class="project-info-block__body project-composition">
+																												<div class="project-composition__icon icon-composition"></div>
+																												<div class="project-composition__title">{meta.composition}</div>
+																											</div>
+																										</div>
+																										<div class="project-info-block">
+																											<div class="project-info-block__title">Расцветка</div>
+																											<div class="project-info-block__body project-color">
+																												<img src={meta.colorSrc} alt={meta.colorName} class="project-color__view" loading="lazy">
+																												<div class="project-color__title">{meta.colorName}</div>
+																											</div>
+																										</div>
+																									</div>
+																									<div class="projects__info-item-col projects__info-item-col_set" data-elem="disclosure.inner">
+																										{
+																											meta.sets.map(({ title, set }) => 
+																												<div class="project-info-block">
+																													<div class="project-info-block__title">{title}</div>
+																													<div class="project-info-block__body project-set">
+																														{
+																															set.map(({ title, number }) => 
+																																<div class="project-set__row">
+																																	<div class="project-set__icon icon-builder"></div>
+																																	<div class="project-set__title">{title}</div>
+																																	<div class="project-set__number">{number}</div>
+																																</div>)
+																														}
+																													</div>
+																												</div>
+																											)
+																										}
+																									</div>
+																								</div>
+																							</div>
+																							<div class="projects__info-item-row projects__info-item-row_prices">
+																								{
+																									meta.prices.map(({ title, price }) =>
+																										<div class="project-info-block">
+																											<div class="project-info-block__title">{title}</div>
+																											<div class="project-info-block__body project-info-price">{price}<small> ₽</small></div>
+																										</div>)
+																								}
+																							</div>
+																							<div class="projects__info-item-desc">
+																								*цена зависит от региона, акций<br>и внутренних настроек маркетплейсов
+																							</div>
+																						</div>)
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="projects__bottom">
+				<div class="projects__navigation">
+					<button class="btn btn_slider-nav" data-elem="projects.prev">
+						<div class="btn__label btn__label_hidden">Предидущий слайд</div>
+						<div class="btn__icon icon-arrow-left"></div>
+					</button>
+					<button class="btn btn_slider-nav" data-elem="projects.next">
+						<div class="btn__label btn__label_hidden">Следующий слайд</div>
+						<div class="btn__icon icon-arrow-right"></div>
+					</button>
+				</div>
+				<div class="projects__pagination" data-elem="projects.pagination"></div>
+			</div>
+		</div>
+	</section>
+	<section id="steps" class="ideas section-space" data-component="ideas" data-theme="dark">
+		<div class="container ideas__container">
+			<div class="container container_wide ideas__info">
+				<div class="ideas__header tg-h2">
+					<div class="ideas__title ideas__title_desc" data-component="text-reveal">
+						<div class="line">Ваша кухня —</div>
+						<div class="line">от идеи</div>
+						<div class="line">до установки</div>
+					</div>
+					<div class="ideas__title ideas__title_tablet" data-component="text-reveal">
+						<div class="line">Ваша кухня —</div>
+						<div class="line">от идеи до установки</div>
+					</div>
+				</div>
+				<div class="ideas__desc tg-p1" data-component="text-block-reveal">
+					Посмотрите короткое видео. Оно расскажет вам, как из универсальных элементов вы сможете составить систему, которая будет идеально подходить под вашу кухню и ваши привычки	
+				</div>
+			</div>
+			<div class="ideas__slider-area">
+				<div class="ideas__slider swiper" data-elem="ideas.slider">
+					<div class="swiper-wrapper ideas__slider-wrapper">
+						{
+							ideas.map(({ title, src }) => <div class="swiper-slide ideas__slide ratio-wrap">
+								<video playsinline muted="muted" preload="meta" src={src} class="ratio-wrap__item" title={title}></video>
+							</div> )
+						}
+					</div>
+				</div>
+				<div class="container container_wide ideas__slider-overlay">
+					<div class="ideas__pagination">
+						<span class="ideas__current" data-elem="ideas.current">01</span>/<span class="ideas__total" data-elem="ideas.total">{addLeadingZero(ideas.length)}</span>
+					</div>
+					<div class="ideas__navigation">
+						<button class="btn btn_slider-nav" data-elem="ideas.prev">
+							<div class="btn__label btn__label_hidden">Предидущий слайд</div>
+							<div class="btn__icon icon-arrow-left"></div>
+						</button>
+						<button class="btn btn_slider-nav" data-elem="ideas.next">
+							<div class="btn__label btn__label_hidden">Следующий слайд</div>
+							<div class="btn__icon icon-arrow-right"></div>
+						</button>
+					</div>
+					<div class="ideas__thumbs swiper" data-elem="ideas.thumbs">
+						<div class="swiper-wrapper">
+							{
+								ideas.map(({ title }) => <div class="ideas__thumb-wrap swiper-slide">
+																						<div class="ideas__thumb" data-elem="ideas.thumb">
+																							<svg class="ideas__thumb-progress" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+																								<circle class="ideas__thumb-progress-total" cx="10.9794" cy="10.9793" r="8.62928" stroke="currentColor" stroke-width="4.7"/>
+																								<circle class="ideas__thumb-progress-current" cx="10.9794" cy="10.9793" r="8.62928" stroke="currentColor" stroke-width="4.7"/>
+																							</svg>
+																							<div class="ideas__thumb-label">
+																								{title}
+																							</div>
+																						</div>
+																					</div> )
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="manuals" class="manuals section-space" data-component="manuals" data-theme="dark">
+		<div class="container manuals__container">
+			<div class="manuals__title tg-h2" data-component="text-reveal">
+				<div class="line">Видеоинструкции</div>
+			</div>
+			<div class="manuals__slider swiper" data-elem="manuals.slider">
+				<div class="manuals__slider-wrapper swiper-wrapper">
+					{
+						manuals.map(({ title, text, posterSrc, duration }, idx) =>
+																						<a href={`#manual-${idx + 1}`}
+																							data-caption={title}
+																							data-fslightbox="manuals"
+																							//data-autoplay="true"
+																							data-muted="true"
+																							class="swiper-slide manuals__card">
+																							<div class="manuals__card-view-wrap">
+																								<div class="manuals__card-view ratio-wrap">
+																									<div class="manuals__duration">{duration}</div>
+																									<picture>
+																										<img src={posterSrc} alt={title} class="ratio-wrap__item" loading="lazy">
+																									</picture>
+																								</div>
+																								<div class="manuals__play-btn"><span class="icon-play"></span></div>
+																							</div>
+																							<div class="manuals__card-title" data-component="text-reveal">
+																								<div class="line">
+																									{title}
+																								</div>
+																							</div>
+																							<div class="manuals__card-text tg-p2" data-component="text-block-reveal">{text}</div>
+																						</a>)
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="manuals-video" data-theme="dark">
+		{
+			manuals.map(({ videoSrc }, idx) =>
+				<iframe id={`manual-${idx + 1}`} class="manuals-video__item"
+					src={videoSrc}
+					width="1000"
+					height="563"
+					allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+					frameborder="0"
+					allowfullscreen>
+				</iframe>)
+		}
+	</section>
+	<section id="builder" class="builder section-space" data-theme="dark">
+		<div class="container builder__container">
+			<div class="builder__view">
+				<div class="builder__view-wrap ratio-wrap" data-component="parallax">
+					<picture>
+						<img src="img/builder/main.webp" alt="Постер конструктора Qumen Kitchen" class="builder__view-img ratio-wrap__item" loading="lazy">
+					</picture>
+				</div>
+			</div>
+			<div class="builder__header">
+				<div class="builder__title tg-h2" data-component="text-reveal">
+					<div class="line">Удобный</div>
+					<div class="line">конструктор</div>
+				</div>
+				<div class="builder__description tg-p1" data-component="text-block-reveal">
+					В сотрудничестве с PlanPlace мы даем вам возможность создать проект самим. Рисуйте сами, консультируйтесь с нами перед покупкой или присылайте чужие проекты — мы всегда поможем.
+				</div>
+			</div>
+			<div class="builder__cards">
+				{
+					[
+						"Интерактивный конструктор —<br>просто и интересно",
+						"Примерная цена рассчитывается сразу — удобно и видно выгоду",
+						"Получите спецификацию<br>со всеми ссылками<br>для покупки товаров"
+					].map((text, idx) => <div class="builder__card builder__card_second">
+						<img src="img/builder/builder.svg" alt="Иконка конструктора" class="builder__card-view" loading="lazy" />
+						<div class="builder__card-number">0{idx + 1}</div>
+						<div class="builder__card-text" set:html={text}></div>
+					</div>)
+				}
+				<a href="#" class="builder__card builder__card_primary builder__card_desc">
+					<div class="builder__card-text">Открыть конструктор</div>
+					<div class="builder__card-icon icon-arrow-right"></div>
+				</a>
+				<div class="builder__card builder__card_primary builder__card_mob">
+					<img src="img/pc-only.svg" alt="" class="builder__card-view" loading="lazy">
+					<div class="builder__card-text">Конструктор доступен только на настольных компьютерах</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="marketplaces" class="marketplaces-section section-space" data-theme="dark">
+		<div class="container container_wide marketplaces-section__container">
+			<picture>
+				<source media="(max-width: 900px)" srcset="img/marketplaces-mob.webp"/>
+				<img src="img/marketplaces.webp" alt="Фон секции торговые площадки" class="marketplaces-section__bg" data-component="parallax" loading="lazy" />
+			</picture>
+			<div class="marketplaces-section__wrap">
+				<div class="marketplaces-section__inner">
+					<div class="marketplaces-section__title tg-h2" data-component="text-reveal">
+						<div class="line">Покупайте,</div>
+						<div class="line">как привыкли</div>
+					</div>
+					<div class="marketplaces-section__description tg-p1" data-component="text-block-reveal">
+						Покупка через маркетплейсы, всё, как вы привыкли: купите, не выходя из дома, в любую погоду и время года, короткое время ожидания, доставка до двери или ПВЗ.
+					</div>
+					<div class="marketplaces-section__links">
+						{
+							[
+								{ href: "https://www.ozon.ru/seller/egregor-kyumen-2512784/products/?miniapp=seller_2512784", src: "img/marketplaces/ozon.svg", label: "Ozon" },
+								{ href: "https://www.wildberries.ru/seller/250000361", src: "img/marketplaces/wb.svg", label: "Wildberries" },
+								{ href: "#", src: "img/marketplaces/jmarket.svg", label: "Я. Маркет" },
+							].map(({ href, src, label }) => <a href={href} class="marketplaces-section__link link" target="_blank" title={label}>
+								<img src={src} alt={label} class="marketplaces-section__link-view" loading="lazy">
+								<div class="link__label" set:html={label}></div>
+								<div class="link__icon icon-arrow-right"></div>
+							</a>)
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="factory" class="advantages" data-theme="dark">
+		<video playsinline autoplay="autoplay" muted="muted" loop="loop" preload="meta" class="advantages__bg" data-component="parallax">
+			<source src="video.mp4" type="video/mp4">
+			Ваш браузер не поддерживает видео.
+		</video>
+		<div class="container advantages__container">
+			<div class="advantages__inner">
+				<div class="advantages__header">
+					<div class="advantages__title tg-h2" data-component="text-reveal">
+						<div class="line">Мы хорошо</div>
+						<div class="line">знаем свое дело</div>
+					</div>
+					<div class="advantages__subtitle tg-p1" data-component="text-block-reveal">Мы придумываем, проектируем, <br class="mob-break">производим <br class="desc-break tablet-break">и продаем мебель <br class="mob-break">уже 25 лет. И все эти годы <br class="tablet-break mob-break">мы растем.</div>
+				</div>
+				<div class="advantages__list swiper" data-component="advantages">
+					<div class="advantages__wrapper swiper-wrapper">
+						{
+							[
+								{ title: "Современная автоматизированная фабрика", desc: "Наши кухни производятся на фабрике по производству корпусной мебели ГК Моби" },
+								{ title: "Высокое качество кухонь и безупречный сервис компании", desc: "Наш рейтинг на маркетплейсах на все кухонные системы выше 4.7 баллов и подтвержден тысячами положительных отзывов" },
+								{ title: "Экологичные и безопасные материалы", desc: "Изготавливаем из ЛДСП класса Е1 и МДФ собственного производства, которые подтверждены лесным сертификатом FSC" },
+							].map(({ title, desc }) => <div class="advantages__card swiper-slide">
+								<img src="img/cabinet.svg" alt="Шкаф" class="advantages__card-view" loading="lazy">
+								<div class="advantages__card-title" set:html={title} data-component="text-block-reveal"></div>
+								<div class="advantages__card-description" set:html={desc} data-component="text-block-reveal"></div>
+							</div>)
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="support" class="support section-space" data-theme="dark">
+		<div class="container support__container">
+			<picture>
+				<source media="(max-width: 900px)" srcset="img/support-mob.webp" />
+				<img src="img/support-desc.webp" alt="Поддержка" class="support__bg" data-component="parallax"/>
+			</picture>
+			<div class="support__inner">
+				<div class="support__title tg-h2" data-component="text-reveal">
+					<div class="line">Обеспечиваем</div>
+					<div class="line">клиентскую</div>
+					<div class="line">поддержку 24/7</div>
+				</div>
+				<div class="support__contacts tg-s1">
+					<div class="support__contact-block">
+						<div class="support__contact-label">Режим работы</div>
+						<div class="support__contact ">пн–пт с 8:00 до 17:00</div>
+					</div>
+					<div class="support__contact-block">
+						<div class="support__contact-label">Телефон</div>
+						<a href="tel:88001013330" class="support__contact link"><span class="link__label">8 800 101-33-30</span></a>
+					</div>
+					<div class="support__contact-block">
+						<div class="support__contact-label">Почта</div>
+						<a href="mailto:help@tdegregor.ru" class="support__contact link"><span class="link__label">help@tdegregor.ru</span></a>
+					</div>
+					<div class="support__contact-block">
+						<div class="support__contact-label">Соцсети</div>
+						<div class="support__contact social-contacts">
+							{
+								[
+									{ href: "#", label: "Telegram", icon: "icon-telegram" },
+									{ href: "#", label: "VK", icon: "icon-vk" },
+									{ href: "#", label: "WatsApp", icon: "icon-watsapp" }
+								].map(({ href, label, icon }) => <a href={href} class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark">
+																										<div class="btn__label btn__label_hidden">{label}</div>
+																										<div class:list={["btn__icon", icon]}></div>
+																									</a>)
+							}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="faq" class="faq section-space" data-theme="light">
+		<div class="container faq__container">
+			<div class="faq__title tg-h2" data-component="text-reveal">
+				<div class="line">Часто задаваемые</div>
+				<div class="line">вопросы</div>
+			</div>
+			<ul class="faq__list" data-component="faq">
+				{
+					faq.map(({ question, answer }) =>
+						<li class="faq__item" data-elem="faq.item">
+							<div class="faq__item-header" data-elem="disclosure.toggle">
+								<div class="faq__item-question">{question}</div>
+								<div class="faq__item-sign">
+									<svg class="faq__item-sign-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0 6 H12" stroke="currentColor" stroke-width="1.5"/>
+										<path d="M6 0 V12" class="faq__item-sign-spline_active" stroke="currentColor" stroke-width="1.5"/>
+									</svg>
+								</div>
+							</div>
+							<div class="faq__item-answer">
+								<div class="faq__item-answer-inner" data-elem="disclosure.inner">
+									{answer}
+								</div>
+							</div>
+						</li>
+					)
+				}
+			</ul>
+		</div>
+	</section>
+	<section id="contact" class="contact-form-section section-space" data-theme="light">
+		<picture>
+			<img src="img/contact-form-bg.webp" alt="Фон для секции с формой обратной связи" class="contact-form-section__bg" data-component="parallax" loading="lazy">
+		</picture>
+		<div class="container container_wide contact-form-section__container">
+			<form id="feedback-form" name="feedback-form" class="form form_section form_feedback contact-form-section__form" data-component="form">
+				<div class="form__header">
+					<div class="form__title tg-h2" data-component="text-reveal">
+						<div class="line">Остались</div>
+						<div class="line">вопросы?</div>
+					</div>
+					<div class="form__description" data-component="text-block-reveal">Оставьте заявку и наши менеджеры обязательно перезвонят вам</div>
+				</div>
+				<div class="form__body">
+					<label class="field field_text form__field form__field_sm">
+						<input required type="text" name="name" class="field__input" placeholder=" ">
+						<div class="field__label">Имя*</div>
+					</label>
+					<label class="field field_text form__field form__field_sm">
+						<input required data-rule-tel type="tel" name="tel" class="field__input" placeholder=" " data-component="tel-input">
+						<div class="field__label">Телефон*</div>
+					</label>
+					<label class="field field_text form__field form__field_lg">
+						<input required type="email" name="email" class="field__input" placeholder=" ">
+						<div class="field__label">Почта*</div>
+					</label>
+					<label class="field field_textarea form__field form__field_lg">
+						<textarea required name="message" class="field__input"  placeholder=" " rows="7" />
+						<div class="field__label">Сообщение*</div>
+					</label>
+					<label class="files-field form__field form__field_lg" data-component="file-drop">
+						<input type="file" name="attachments" multiple
+							accept=".gif,.jpeg,.webp,.png,.doc,.pdf,.bmp,.tif,.txt,.rtf,.html,.doc,.docx,.odt,.ppt,.ppcx"
+							data-rule-max-file-size="10240"
+							data-rule-extension="gif|jpeg|webp|png|doc|pdf|bmp|tif|txt|rtf|html|doc|docx|odt|ppt|ppcx"
+							class="files-field__input">
+						<div class="files-field__body">
+							<div class="files-field__label">Файлы</div>
+							<div class="files-field__selected" data-elem="file-drop.selected"></div>
+							<ul class="files-field__conditions">
+								<li class="files-field__condition">Принимаемые форматы: gіf, jрg, jреg, рng, bmp, tіf, tхt, rtf, html, рdf, dос, dосх, оdt, ррt, ррсх.</li><li class="files-field__condition">Максимальный размер файла: 10 мб.</li>
+							</ul>
+							<div class="files-field__tip">
+								<div class="files-field__tip-inner">Перетащите файл сюда</div>
+							</div>
+						</div>
+						<div class="files-field__icon icon-drop"></div>
+					</label>
+				</div>
+				<div class="form__footer">
+					<label class="field field_checkbox form__field">
+						<div class="field__input cm-checkbox">
+							<input required name="commercial-notifications" type="checkbox" class="cm-checkbox__input">
+							<div class="cm-checkbox__body"></div>
+						</div>
+						<div class="field__info">
+							<div class="field__label">Даю согласие на получение <br class="mob-break">документов и уведомлений <br class="mob-break">на&nbsp;указанный&nbsp;E-mail&nbsp;/&nbsp;Телефон</div>
+						</div>
+					</label>
+					<label class="field field_checkbox form__field">
+						<div class="field__input cm-checkbox">
+							<input required name="agreement" type="checkbox" class="cm-checkbox__input">
+							<div class="cm-checkbox__body"></div>
+						</div>
+						<div class="field__info">
+							<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+						</div>
+					</label>
+					<button type="submit" class="btn btn_primary btn_rect btn_md">
+						<div class="btn__label">Отправить</div>
+					</button>
+				</div>
+			</form>
+		</div>
+	</section>
 </Layout>
-<style>
-	.container {
-		padding: 40px;
-	}
-	h3 {
-		font-weight: 600;
-		margin-bottom: 20px;
-	}
-</style>

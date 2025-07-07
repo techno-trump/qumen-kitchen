@@ -1,0 +1,47 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.cookies-agreement {
+	display: flex;
+	align-items: end;
+	justify-content: start;
+	padding: mi.rem(52) calc(var(--container-space) * 2);
+	@media (max-width: config.$mbpT) {
+		padding: mi.rem(31) calc(var(--container-space) * 2);
+	}
+	@media (max-width: config.$mbpMM) {
+		padding: mi.rem(20) calc(var(--container-space) * 2);
+	}
+	&__panel {
+		color: var(--color-text-light);
+		display: inline-grid;
+		grid-auto-flow: column;
+		align-items: center;
+		background-color: var(--color-sf-bg-02);
+		padding: mi.rem(10) mi.rem(10) mi.rem(10) mi.rem(20);
+		gap: mi.rem(20);
+		border-radius: mi.rem(12);
+		overflow: hidden;
+		backdrop-filter: blur(20px);
+		@media (max-width: config.$mbpT) {
+			gap: mi.rem(16);
+		}
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(8) mi.rem(8) mi.rem(8) mi.rem(10);
+		}
+	}
+	&__text {
+		font-size: mi.rem(14);
+		max-width: mi.rem(200);
+		--color: var(--color-text-accent);
+		--hover-color: var(--color-hover);
+		@media (max-width: config.$mbpT) {
+			max-width: none;
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(10);
+		}
+	}
+	&__btn {
+	}
+}

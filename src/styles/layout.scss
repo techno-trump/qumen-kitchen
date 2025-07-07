@@ -1,12 +1,38 @@
 @use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
 :root {
-	--section-space: 50px;
-	@media (max-width: config.$mbpT) {
-		--section-space: 36px;
+	--speed: 0.3s;
+	--scroll-width: 17px;
+	--scroll-compensation: 0px;
+	--container-space: #{mi.rem(30)};
+	--container-save-space: 32px;
+	--section-space: #{mi.rem(50)};
+
+	display: flex;
+	flex-direction: column;
+	font-family: "Geologica";
+	font-weight: 300;
+	line-height: 1.2;
+	letter-spacing: 0;
+	min-height: 100%;
+
+	font-size: calc(16 / 1366 * min(100vw, 1920px));
+	background-color: var(--color-sf-bg-inverted);
+
+	&.is-mobile {
+		--scroll-width: 0px;
 	}
-	// @media (max-width: config.$mbpM) {
-	// 	--section-space: 24px;
-	// }
+	@media (max-width: config.$mbpT) {
+		--section-space: #{mi.rem(40)};
+		--container-space: #{mi.rem(16)};
+		font-size: calc(16 / 600 * 100vw);
+	}
+	@media (max-width: config.$mbpMM) {
+		--section-space: #{mi.rem(25)};
+		--container-space: #{mi.rem(8)};
+		font-size: calc(16 / 320 * 100vw);
+	}
 }
 .section-space {
 	padding-top: var(--section-space);
@@ -14,17 +40,10 @@
 .section-space-bottom, .section-space {
 	padding-bottom: var(--section-space);
 }
-html {
-	--scroll-width: 0px;
-	&:not(.is-mobile) {
-		--scroll-width: 17px;
-	}
-	--scroll-compensation: 0px;
-}
-html.scroll-lock-by-drawer {
-	overflow: hidden;
+html.scroll-lock-by-drawer, .fslightbox-open {
 	--scroll-compensation: var(--scroll-width);
 	padding-right: var(--scroll-width);
+	overflow: hidden;
 }
 body {
 	flex: 1 1 auto;
@@ -37,11 +56,10 @@ body main {
 }
 .container {
 	width: 100%;
-	margin: auto;
-	padding-left: var(--container-save-space);
-	padding-right: var(--container-save-space);
+	margin: 0 auto;
+	max-width: calc(min(100%, 1920px) - var(--container-space) * 4);
 	&_wide {
-		max-width: 1440px;
+		max-width: calc(min(100%, 1920px) - var(--container-space) * 2);
 	}
 }
 

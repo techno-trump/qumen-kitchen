@@ -1,1 +1,179 @@
 @use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.footer {
+	color: var(--color-text-light);
+	background-color: var(--color-sf-bg);
+	padding: mi.rem(46) 0 mi.rem(32);
+	@media (max-width: config.$mbpT) {
+		padding: mi.rem(32) 0 mi.rem(16);
+	}
+	@media (max-width: config.$mbpMM) {
+		padding: mi.rem(24) 0 mi.rem(32);
+	}
+	&__widget-anchor {
+		align-self: start;
+		grid-area: space;
+		height: mi.rem(58);
+	}
+	:root[data-page="builder"] &__widget-anchor {
+		@media (min-width: (config.$mbpT + 1px)) {
+			display: none;
+		}
+	}
+	&__body {
+		display: grid;
+		grid-template-columns: 2.8fr 2.4fr 2.4fr 3.64fr;
+		grid-template-rows: auto 1fr;
+		gap: 0 mi.rem(40);
+		grid-template-areas: "logo nav contacts space" "policy nav contacts space";
+		margin-bottom: mi.rem(54);
+		
+	}
+	:root[data-page="builder"] &__body {
+		grid-template-columns: mi.rem(344) mi.rem(240) mi.rem(222);
+		justify-content: space-between;
+		grid-template-areas: "logo nav contacts" "policy nav contacts";
+	}
+	&__body, :root[data-page="builder"] &__body {
+		@media (max-width: config.$mbpT) {
+			grid-template-columns: repeat(8, 1fr);
+			grid-template-areas: "logo logo logo logo logo space space space" "nav nav nav nav contacts contacts contacts contacts";
+			gap: 0 mi.rem(30);
+			margin-bottom: mi.rem(26);
+		}
+		@media (max-width: config.$mbpMM) {
+			grid-template-columns: auto 1fr;
+			gap: 0 mi.rem(23);
+			grid-template-areas: "logo logo" "nav contacts" "nav space" "marketplaces space";
+		}
+	}
+	
+	&__logo {
+		justify-self: start;
+		grid-area: logo;
+		--width: #{mi.rem(244)};
+		margin-bottom: mi.rem(20);
+		@media (max-width: config.$mbpT) {
+			--width: #{mi.rem(292)};
+			margin-bottom: mi.rem(24);
+		}
+		@media (max-width: config.$mbpMM) {
+			--width: #{mi.rem(180)};
+			margin-bottom: mi.rem(20);
+		}
+	}
+	:root[data-page="index"] &__logo {
+		pointer-events: none;
+	}
+	&__nav {
+		grid-area: nav;
+		display: grid;
+		gap: mi.rem(12);
+		@media (max-width: config.$mbpT) {
+			gap: mi.rem(10);
+		}
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(8);
+			font-size: mi.rem(12);
+			margin-bottom: mi.rem(20);
+		}
+	}
+	&__contacts {
+		grid-area: contacts;
+	}
+	&__marketplaces {
+		grid-area: marketplaces;
+		@media (min-width: (config.$mbpMM + 1px)) {
+			display: none;
+		}
+	}
+	&__footer-marketplaces {
+		@media (max-width: config.$mbpT) {
+			grid-area: marketplaces;
+			align-self: end;
+		}
+		@media (max-width: config.$mbpMM) {
+			display: none;
+		}
+	}
+	&__copyright {
+		color: var(--color-text-light-04);
+	}
+	&__policy {
+		grid-area: policy;
+		@media (max-width: config.$mbpT) {
+			display: none;
+		}
+	}
+	&__footer-policy, &__policy, &__made-by {
+		color: var(--color-text-light-04);
+	}
+	&__made-by {
+		justify-self: end;
+		& {
+			--hover-color: currentColor;
+		}
+		& strong {
+			color: var(--color-text-light);
+			transition: color var(--speed);
+		}
+		@media (any-hover: hover) {
+			& .link:hover strong {
+				color: var(--color-accent);
+			}
+		}
+		@media (max-width: config.$mbpT) {
+			grid-area: madeby;
+			justify-self: start;
+		}
+	}
+	&__footer {
+		display: grid;
+		align-items: center;
+		grid-template-columns: 1fr auto 1fr;
+		gap: mi.rem(40);
+		@media (max-width: config.$mbpT) {
+			grid-template-columns: 1fr auto;
+			grid-template-areas: "copyright marketplaces" "policy marketplaces" "madeby marketplaces";
+			gap: mi.rem(6) mi.rem(30);
+			font-size: mi.rem(12);
+		}
+		@media (max-width: config.$mbpMM) {
+			grid-template-columns: 1fr;
+			grid-template-areas: "copyright" "policy" "madeby";
+		}
+	}
+	&__footer-policy {
+		@media (min-width: (config.$mbpT + 1px)) {
+			display: none;
+		}
+		@media (max-width: config.$mbpT) {
+			grid-area: policy;
+		}
+	}
+}
+.contacts {
+	&__title {
+		font-size: mi.rem(20);
+		margin-bottom: mi.rem(16);
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(18);
+			margin-bottom: mi.rem(12);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(16);
+		}
+	}
+	&__list {
+		display: grid;
+		gap: mi.rem(12);
+		@media (max-width: config.$mbpT) {
+			gap: mi.rem(10);
+		}
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(8);
+			font-size: mi.rem(12);
+		}
+	}
+}

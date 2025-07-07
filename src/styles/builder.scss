@@ -1,0 +1,192 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.builder {
+	
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: "view header" "view cards";
+		gap: mi.rem(40);
+		@media (max-width: config.$mbpT) {
+			grid-template-columns: 100%;
+			grid-template-areas: "header" "view" "cards";
+			gap: mi.rem(30);
+		}
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(20);
+		}
+	}
+	&__view {
+		grid-area: view;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		justify-content: end;
+		left: 0;
+		top: 0;
+		border-radius: mi.rem(22);
+		overflow: hidden;
+		& > * {
+			flex: 1 1 auto;
+		}
+		@media (max-width: config.$mbpT) {
+			--ratio: 68%;
+			border-radius: mi.rem(16);
+		}
+		@media (max-width: config.$mbpMM) {
+			--ratio: 86.8%;
+		}
+	}
+	&__view-wrap {
+		margin-top: auto;
+		flex: 1 0 120%;
+	}
+	&__header {
+		grid-area: header;
+		@media (min-width: (config.$mbpT + 1px)) {
+			padding-top: mi.rem(14);
+			padding-right: mi.rem(54);
+		}
+	}
+	&__title {
+		margin-bottom: mi.rem(30);
+		@media (max-width: config.$mbpMM) {
+			margin-bottom: mi.rem(20);
+		}
+	}
+	&__description {
+		@media (max-width: config.$mbpT) {
+			max-width: mi.rem(460);
+		}
+	}
+	&__cards {
+		grid-area: cards;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: mi.rem(20);
+		@media (min-width: (config.$mbpT + 1px)) {
+			padding-right: mi.rem(54);
+			padding-bottom: mi.rem(14);
+		}
+		@media (max-width: config.$mbpT) {
+			gap: mi.rem(11) mi.rem(8);
+		}
+	}
+	&__card {
+		display: grid;
+		gap: mi.rem(26);
+		padding: mi.rem(20);
+		border-radius: mi.rem(16);
+		overflow: hidden;
+		@media (max-width: config.$mbpT) {
+			gap: mi.rem(14);
+			padding: mi.rem(20) mi.rem(10) mi.rem(20) mi.rem(17);
+		}
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(10);
+			padding: mi.rem(12);
+			padding-bottom: mi.rem(10);
+		}
+		&_second {
+			background-color: var(--color-sf-light);
+			@media (min-width: (config.$mbpT + 1px)) {
+				padding-bottom: mi.rem(14);
+			}
+		}
+		&_primary {
+			color: var(--color-text-light);
+			background-color: var(--color-accent);
+			transition: background-color var(--speed);
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: var(--color-hover);
+				}
+			}
+		}
+		&_desc {
+			align-items: end;
+			grid-template-columns: auto auto;
+			html.is-mobile & {
+				display: none;
+			}
+			@media (max-width: config.$mbpT) {
+				display: none;
+			}
+		}
+		&_mob {
+			@media (min-width: (config.$mbpT + 1px)) {
+				html:not(.is-mobile) & {
+					display: none;
+				}
+			}
+		}
+	}
+	&__card-view {
+		&, & > img {
+			object-fit: contain;
+		}
+	}
+	&__card_primary &__card-view {
+		width: mi.rem(128);
+		height: mi.rem(60);
+		@media (max-width: config.$mbpMM) {
+			width: mi.rem(68);
+			height: mi.rem(32);
+		}
+	}
+	&__card_second &__card-view {
+		width: mi.rem(56);
+		height: mi.rem(56);
+		@media (max-width: config.$mbpMM) {
+			width: mi.rem(32);
+			height: mi.rem(32);
+		}
+	}
+	&__card-number {
+		justify-self: end;
+		color: var(--color-text-accent-2-05);
+		font-size: mi.rem(40);
+		line-height: 1;
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(30);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(20);
+		}
+	}
+	&__card-text {
+		line-height: 1.3;
+		@media (max-width: config.$mbpMM) {
+			line-height: 1.2;
+		}
+	}
+	&__card_desc &__card-text {
+		font-size: mi.rem(20);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(14);
+		}
+	}
+	&__card-icon {
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+	&__card_mob &__card-text {
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(18);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+	&__card_second &__card-text {
+		grid-column: 1/span 2;
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(18);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+}

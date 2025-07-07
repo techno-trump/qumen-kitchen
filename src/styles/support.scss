@@ -1,0 +1,90 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.support {
+	color: var(--color-text-light);
+	&__container {
+		display: grid;
+		position: relative;
+		border-radius: mi.rem(24);
+		overflow: hidden;
+		@media (max-width: config.$mbpMM) {
+			border-radius: mi.rem(12);
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			background-color: var(--color-sf-deep-bg);
+		}
+		&::before {
+			grid-column: 1/span 1;
+			grid-row: 1/span 1;
+			content: "";
+			width: 100%;
+			padding-top: 38.28%;
+			@media (max-width: config.$mbpT) {
+				padding-top: 145.52%;
+			}
+			@media (max-width: config.$mbpMM) {
+				padding-top: 138.88%;
+			}
+		}
+	}
+	&__bg {
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 120%;
+		object-fit: cover;
+	}
+	&__inner {
+		display: grid;
+		align-content: space-between;
+		gap: mi.rem(40);
+		position: relative;
+		z-index: 1;
+		grid-column: 1/span 1;
+		grid-row: 1/span 1;
+		padding: mi.rem(30) mi.rem(66) mi.rem(38) mi.rem(30);
+		@media (max-width: config.$mbpT) {
+			padding: mi.rem(17) mi.rem(40) mi.rem(20) mi.rem(20);
+		}
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(20) mi.rem(10) mi.rem(10);
+		}
+	}
+	&__title {
+		@media (max-width: config.$mbpMM) {
+			margin: 0 mi.rem(10);
+		}
+	}
+	&__contacts {
+		display: grid;
+		gap: mi.rem(13);
+		justify-self: end;
+		background-color: var(--color-sf-bg-02);
+		backdrop-filter: blur(30px);
+		border-radius: mi.rem(16);
+		padding: mi.rem(20);
+		@media (max-width: config.$mbpMM) {
+			gap: mi.rem(8);
+			padding: mi.rem(10);
+			justify-self: stretch;
+		}
+	}
+	&__contact-label {
+		font-size: mi.rem(16);
+		color: var(--color-text-light-04);
+		margin-bottom: mi.rem(4);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(12);
+		}
+	}
+}

@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Страница не найдена" description="Ошибка 404" page="404">
+	<section class="section-404">
+		<picture>
+			<source media="(min-width: 901px)" srcset="img/404-bg-desc.webp"/>
+			<source media="(max-width: 900px)" srcset="img/404-bg-mob.webp"/>
+			<img src="img/404-bg-desc.jpg" alt="Фон секции ошибка 404" class="section-404__bg" loading="lazy" />
+		</picture>
+		<div class="container section-404__container">
+			<div class="section-404__error-text">404</div>
+			<div class="section-404__text tg-h3">Страница не найдена</div>
+			<a href="/" class="section-404__btn btn btn_primary btn_md btn_rect">
+				<div class="btn__label">Перейти на главную</div>
+			</a>
+		</div>
+	</section>
+</Layout>

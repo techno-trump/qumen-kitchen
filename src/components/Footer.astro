@@ -1,7 +1,72 @@
 ---
+import Logo from "./Logo.astro";
+import Marketplaces from "./Marketplaces.astro";
+
+interface Props {
+	page?: string;
+}
+
+const { page  } = Astro.props;
+
 // const portalHost = import.meta.env.ASTRO_APP_CABINET_HOST;
 ---
 
-<footer class="footer section-space">
-	
+<footer class="footer">
+	<div class="container footer__container">
+		<div class="footer__body">
+			<Logo className="footer__logo" style="light" />
+			<div class="footer__policy"><a href="#" class="link"><span class="link__label">Политика обработки<br>персональных данных</span></a></div>
+			<nav class="footer__nav">
+				{
+					[
+						{ caption: "Преимущества", href: "#advantages" },
+						{ caption: "Проекты", href: "#projects" },
+						{ caption: "Этапы", href: "#steps" },
+						{ caption: "Видеоинструкции", href: "#manuals" },
+						{ caption: "Конструктор", href: "#builder" },
+						{ caption: "Производство", href: "#factory" },
+						{ caption: "FAQ", href: "#faq" },
+					].map(({ href, caption }) => <a href={href} class="link footer__nav-item"><span class="link__label">{caption}</span></a>)
+				}
+			</nav>
+			<div class="footer__contacts contacts">
+				<div class="contacts__title tg-s2">Контакты</div>
+				<div class="contacts__list">
+					<a href="mailto:help@tdegregor.ru" class="link"><span class="link__label">help@tdegregor.ru</span></a>
+					<a href="tel:88001013330" class="link"><span class="link__label">8 800 101-33-30</span></a>
+					<a href="https://go.2gis.com/hJ83n" class="link"><span class="link__label">Нижегородская область,<br>п. Садовский, д. 101, ком. 21</span></a>
+				</div>
+			</div>
+			<Marketplaces className="footer__marketplaces"></Marketplaces>
+			<div class="footer__widget-anchor" data-elem="builder-widget.bottom-anchor">
+				{
+					page === "builder" &&
+					<div class="builder-widget builder-widget_static builder-widget_collapsed">
+						<div class="builder-widget__wrapper">
+							<div class="builder-widget__panel" data-elem="builder-widget.panel">
+								<!-- data-drawer-toggle="design-product-form" -->
+							<button data-drawer-toggle="design-product-form" type="button" class="builder-widget__button builder-widget__button_project">
+								<div class="builder-widget__button-inner">
+									<div class="builder-widget__header">
+										<div class="builder-widget__label">Дизайн-проект</div>
+									</div>
+								</div>
+							</button>
+						</div>
+						</div>
+					</div>
+				}
+				
+			</div>
+		</div>
+		
+		<div class="footer__footer">
+			<div class="footer__copyright">© 2025, «Кьюмен» от ООО ТД «Эгрегор»</div>
+			<div class="footer__footer-policy"><a href="#" class="link"><span class="link__label">Политика обработки персональных данных</span></a></div>
+			<Marketplaces className="footer__footer-marketplaces"></Marketplaces>
+			<div class="footer__made-by">
+				<a href="#" class="link"><span class="link__label">Сделано в <strong>VZDH</strong></span></a>
+			</div>
+		</div>
+	</div>
 </footer>

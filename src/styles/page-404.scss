@@ -1,0 +1,44 @@
+@use "./config.scss" as config;
+@use "./mixins.scss" as mi;
+
+.section-404 {
+	display: flex;
+	min-height: calc(100 * var(--vhu, 1vh));
+	min-height: calc(100 * var(--vhu, 1svh));
+	position: relative;
+	overflow: hidden;
+	&__bg {
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	&__error-text {
+		font-size: mi.rem(250);
+		line-height: 1;
+		color: var(--color-text-accent);
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(200);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(140);
+		}
+	}
+	&__text {
+		margin-bottom: mi.rem(30);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(20);
+		}
+	}
+	&__btn {
+	}
+}
