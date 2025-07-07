@@ -79,12 +79,12 @@
 			// animation: show-header-menu 0.8s cubic-bezier(0, 0.25, 0, 1) forwards;
 		}
 		@media (max-width: config.$mbpT) {
-			padding: mi.rem(32);
+			padding: mi.rem(52) mi.rem(32);
 			border-radius: 0;
 			max-width: none;
 		}
 		@media (max-width: config.$mbpMM) {
-			padding: mi.rem(32) mi.rem(16);
+			padding: mi.rem(52) mi.rem(16);
 		}
 		// @keyframes show-header-menu {
 		// 	0% {
