@@ -5,13 +5,30 @@
 	padding: calc(var(--section-space) * 2) 0;
 	&__container {
 		display: grid;
-		grid-template-columns: auto auto;
+		grid-template-columns: 100%;
+		& > * {
+			grid-row: 1/span 1;
+			grid-column: 1/span 1;
+		}
 	}
 	&__widget-anchor-wrapper {
+		
 		align-self: start;
 		display: grid;
 		align-items: end;
-		height: calc(var(--vhu, 1svh) * 100 - var(--section-space) * 4);
+		height: calc(var(--vhu, 1vh) * 100 - var(--section-space) * 2 - mi.rem(48));
+		height: calc(var(--vhu, 1svh) * 100 - var(--section-space) * 2 - mi.rem(48));
+		@media (max-width: config.$mbpT) {
+			height: calc(var(--vhu, 1vh) * 100 - var(--section-space) * 2 - mi.rem(32));
+			height: calc(var(--vhu, 1svh) * 100 - var(--section-space) * 2 - mi.rem(32));
+		}
+		@media (max-width: config.$mbpMM) {
+			height: calc(var(--vhu, 1vh) * 100 - var(--section-space) * 2 - mi.rem(16));
+			height: calc(var(--vhu, 1svh) * 100 - var(--section-space) * 2 - mi.rem(16));
+		}
+	}
+	&__widget-anchor {
+		height: mi.rem(60);
 	}
 	&__inner {
 		max-width: mi.rem(830);

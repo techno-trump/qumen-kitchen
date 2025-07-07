@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
 import throttle from "lodash.throttle";
+import debounce from "lodash.debounce";
 gsap.registerPlugin(ScrollTrigger);
 
 function areRectsIntersecting(a, b) {
@@ -26,7 +27,7 @@ document.querySelectorAll(`[data-component~="builder-widget"]`).forEach(root => 
 		root.style.setProperty("--bottom", position.bottom);
 		root.style.setProperty("--left", position.left);
 	};
-		console.log(footer);
+	setTimeout(recalcPosition, 500);
 	
 	const recalcIntersection = () => {
 		const footerBcr = footer.getBoundingClientRect(); 
@@ -37,9 +38,12 @@ document.querySelectorAll(`[data-component~="builder-widget"]`).forEach(root => 
 
 	recalcPosition();
 
-	window.addEventListener("resize", throttle(recalcPosition, 25));
+	window.addEventListener("resize", recalcPosition);
+	window.addEventListener("orientationchange", recalcPosition);
+
+	
+	window.addEventListener("scroll", throttle(recalcPosition, 100));
 	window.addEventListener("scroll", throttle(recalcIntersection, 25));
-	window.addEventListener("resize", throttle(recalcPosition, 100));
 
 	root.classList.add("_initialized");
 
@@ -48,13 +52,13 @@ document.querySelectorAll(`[data-component~="builder-widget"]`).forEach(root => 
 		const topAnchorBcr = topAnchor.getBoundingClientRect();
 		const bottomAnchorBcr = bottomAnchor.getBoundingClientRect();
 		const bodyBcr = document.documentElement.getBoundingClientRect();
-
+		const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
 		recalcIntersection();
-
+			//console.log(window.innerHeight, rem, window.innerHeight - 20 - rem / 16 * 60);
 		return {
 			left: `${topAnchorBcr.left}px`,
-			right: `${document.documentElement.offsetWidth - bottomAnchorBcr.right}px`,
-			top: `${topAnchorBcr.top - mainBcr.top}px`,
+			right: `${Math.max(document.documentElement.offsetWidth - bottomAnchorBcr.right, 20)}px`,
+			top: `${Math.min(topAnchorBcr.top - mainBcr.top, window.innerHeight - 20 - rem / 16 * 60)}px`,
 			bottom: `${document.documentElement.offsetHeight - (bottomAnchorBcr.bottom - bodyBcr.top)}px`
 		};
 	}

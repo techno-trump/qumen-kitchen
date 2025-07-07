@@ -81,6 +81,18 @@
 			font-size: mi.rem(10);
 		}
 	}
+	&_social#{&}_md {
+		width: mi.rem(40);
+		height: mi.rem(40);
+		@media (max-width: config.$mbpT) {
+			width: mi.rem(48);
+			height: mi.rem(48);
+		}
+		@media (max-width: config.$mbpMM) {
+			width: mi.rem(32);
+			height: mi.rem(32);
+		}
+	}
 	&_social#{&}_md &__icon {
 		font-size: mi.rem(22);
 		@media (max-width: config.$mbpT) {
@@ -252,6 +264,10 @@
 		visibility: visible;
 		transform: translateY(0px);
 	}
+	&__close-btn {
+		position: relative;
+		transform: translateY(-8%);
+	}
 	&_dialog &__panel {
 		max-width: mi.rem(560);
 		width: 100%;
@@ -290,8 +306,8 @@
 	}
 	&_popup &__header {
 		display: grid;
+		gap: mi.rem(24);
 		grid-template-columns: 1fr auto;
-		align-items: center;
 		margin-bottom: mi.rem(14);
 	}
 	&_popup &_body {
@@ -462,7 +478,12 @@
 		height: mi.rem(32);
 		background-color: #403F3F;
 		border-radius: mi.rem(8);
-		--hover-opacity: 0.5;
+		transition: background-color var(--speed);
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #2A2A2A;
+			}
+		}
 	}
 	&__item-icon {
 		width: 100%;
@@ -521,7 +542,7 @@
 		margin-bottom: mi.rem(24);
 	}
 	&_drawer &__header {
-		align-items: center;
+		align-items: start;
 		grid-template-columns: 1fr auto;
 		gap: mi.rem(13.5) mi.rem(24);
 		grid-template-areas: "title btn" "description space";
@@ -583,6 +604,8 @@
 	}
 	&__close-btn {
 		grid-area: btn;
+		position: relative;
+		transform: translateY(-8%);
 	}
 	&__body {
 		display: grid;
@@ -947,6 +970,10 @@
 	display: inline-grid;
 	grid-auto-flow: column;
 	gap: mi.rem(6);
+	&__item {
+		--hover-color: white;
+		--hover-bg-color: #2A2A2A;
+	}
 }
 .mob-break, .desc-break, .tablet-break {
 	display: none;

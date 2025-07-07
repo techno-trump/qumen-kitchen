@@ -117,9 +117,20 @@ body {
 			@media (max-width: config.$mbpT) {
 				margin-right: mi.rem(8);
 			}
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: #18181899;
+				}
+			}
 		}
+		
 		&_builder {
 			background-color: var(--color-accent);
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: #066B6C;
+				}
+			}
 		}
 	}
 	&__panel._docking &__button_project {
@@ -148,6 +159,11 @@ body {
 		background-color: #18181880;
 		@media (max-width: config.$mbpT) {
 			margin-right: 0;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #33333365!important;
+			}
 		}
 	}
 	:root._scrolled &__button_builder, &_collapsed &__button_builder {
@@ -203,7 +219,7 @@ body {
 		}
 	}
 	
-	:root._scrolled &__button &__button-inner, &_collapsed &__button &__button-inner {
+	:root._scrolled &__button &__button-inner, &#{&}_collapsed &__button &__button-inner {
 		padding: mi.rem(10) mi.rem(15);
 		@media (max-width: config.$mbpMM) {
 			padding: mi.rem(9) mi.rem(15);

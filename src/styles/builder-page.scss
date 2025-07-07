@@ -19,7 +19,13 @@
 			display: none;
 		}
 	}
-	&__title {
+	&__msg {
+		position: absolute;
+		right: mi.rem(16);
+		bottom: mi.rem(22);
+		background-color: #F1EFEB;
+		padding: mi.rem(20);
+		border-radius: mi.rem(8);
 	}
 	&__actions {
 		display: grid;
@@ -27,6 +33,7 @@
 		gap: mi.rem(10);
 	}
 	&__body {
+		position: relative;
 		padding: 0 mi.rem(10) mi.rem(10);
 		@media (max-width: config.$mbpT) {
 			display: none;

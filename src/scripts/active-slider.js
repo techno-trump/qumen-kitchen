@@ -1,3 +1,7 @@
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger.js";
+
+gsap.registerPlugin(ScrollTrigger);
 import EventEmitter from "eventemitter3";
 
 class Slide extends EventEmitter {
@@ -38,13 +42,19 @@ export class VideoSlide extends Slide {
 		this.video.currentTime = 0;
 	}
 	play() {
+		let tries = 0;
+		clearInterval(this.interval);
 		this.interval = setInterval(async () => {
+				tries++;
 				try {
 					await this.video.play();
 					clearInterval(this.interval);
 				} catch(ex) {
 					console.error(ex);
 				};
+				if (tries > 10) {
+					clearInterval(this.interval);
+				}
 			}, 100);
 	}
 	pause() {
@@ -115,6 +125,10 @@ export function makeSliderActive(slider, thumbs) {
 		slides[slider.realIndex].play();
 		prevSlideIdx = slider.realIndex;
 	});
-
-	slides[0].play();
+	ScrollTrigger.create({
+		trigger: slider.el,
+		onEnter: () => slides[0].play(),
+		once: true,
+	})
+	
 }

@@ -90,7 +90,17 @@ document.querySelectorAll(`[href*="#"], [href*="/#"]`).forEach(elem => {
 	});
 });
 
-document.documentElement.style.setProperty("--scroll-width", `${window.innerWidth - document.documentElement.offsetWidth}px`);
+setScrollSize();
+const rootResizeObserver = new ResizeObserver(() => setScrollSize());
+rootResizeObserver.observe(document.documentElement);
+function setScrollSize() {
+	setTimeout(() => {
+		const scrollWidth = window.innerWidth - document.documentElement.offsetWidth;
+		if (scrollWidth > 30) return setScrollSize();
+		document.documentElement.style.setProperty("--scroll-width", `${window.innerWidth - document.documentElement.offsetWidth}px`);
+	}, 200);
+}
+
 trackViewHeight();
 
 function trackViewHeight() {

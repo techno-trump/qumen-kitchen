@@ -11,9 +11,10 @@ interface Props {
 	description: string;
 	empty?: boolean;
 	page?: string;
+	noFooter?: boolean;
 }
 
-const { title, description, empty = false, page } = Astro.props;
+const { title, description, empty = false, page, noFooter = false } = Astro.props;
 
 const mode = import.meta.env.MODE as ("development" | "production");
 ---
@@ -53,7 +54,7 @@ const mode = import.meta.env.MODE as ("development" | "production");
 		<main>
 			<slot />
 		</main>
-		{empty ? null : <Footer page={page}></Footer>}
+		{empty || noFooter ? null : <Footer page={page}></Footer>}
 		<div class="drawers">
 			<SuccessDrawer />
 			<FailDrawer />

@@ -163,7 +163,7 @@
 	z-index: 1000;
 	left: 0;
 	top: 0;
-	width: calc(100vw - var(--scroll-width));
+	width: calc(100vw - var(--scroll-width, 0px));
 	&__underlay {
 		position: absolute;
 		z-index: -1;
@@ -171,8 +171,9 @@
 		top: 0;
 		width: 100%;
 		height: 130%;
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+		//background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
 		transform: translateZ(0) translateY(-24%);
+		backdrop-filter: blur(0.4rem);
 		&>div {
 			position: absolute;
 			left: 0;

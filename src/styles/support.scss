@@ -87,4 +87,13 @@
 			font-size: mi.rem(12);
 		}
 	}
+	&__contact {
+		font-size: mi.rem(20);
+		@media (max-width: config.$mbpT) {
+			font-size: mi.rem(32);
+		}
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(16);
+		}
+	}
 }

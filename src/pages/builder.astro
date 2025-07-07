@@ -12,30 +12,32 @@ import Layout from '../layouts/Layout.astro';
 					<button type="button" data-drawer-toggle="design-product-form"  class="btn btn_rect btn_primary btn_md"><span class="btn__label">Дизайн-проект</span></button>
 				</div>
 			</div>
-		</div>
-		<div class="builder-page__body">
-			<div style="height: 100%; width: 100%" id="planplace_container"></div>
-			<script>
-				document.addEventListener('DOMContentLoaded', function () {
-					var params=decodeURIComponent(window.location.search.substring(1));
-					var planplace_container = document.getElementById('planplace_container');
-					var iframe=document.createElement('iframe');
-					iframe.id='planplace';
-					iframe.allowFullscreen=true;
-					iframe.style.width="100%";
-					iframe.style.height="100%";
-					iframe.style.minHeight="700px";
-					iframe.style.border="0";
-					iframe.src='https://planplace.ru/clients/35218700/';
-					if (params !=='') iframe.src=iframe.src + "?" + params; planplace_container?.appendChild(iframe);
-				})
-			</script>
-		</div>
-		<div class="builder-page__unavailable">
-			<div class="container">
-				<img src="img/unavailable.svg" alt="Программное обеспечение не доступно" class="builder-page__unavailable-img">
-				<div class="builder-page__unavailable-title tg-h3">Конструктор недоступен<br>на мобильных устройствах</div>
-				<div class="tg-p2">Чтобы воспользоваться конструктором кухни Кьюмен, откройте сайт на настольном компьютере</div>
+		
+			<div class="builder-page__body">
+				<div style="height: 100%; width: 100%" id="planplace_container"></div>
+				<script>
+					document.addEventListener('DOMContentLoaded', function () {
+						var params=decodeURIComponent(window.location.search.substring(1));
+						var planplace_container = document.getElementById('planplace_container');
+						var iframe=document.createElement('iframe');
+						iframe.id='planplace';
+						iframe.allowFullscreen=true;
+						iframe.style.width="100%";
+						iframe.style.height="100%";
+						iframe.style.minHeight="700px";
+						iframe.style.border="0";
+						iframe.src='https://planplace.ru/clients/35218700/';
+						if (params !=='') iframe.src=iframe.src + "?" + params; planplace_container?.appendChild(iframe);
+					})
+				</script>
+				<div class="builder-page__msg tg-p2">Для создания проекта своей кухни<br>воспользуйтесь 3D-конструктором,<br>который расположен на странице.</div>
+			</div>
+			<div class="builder-page__unavailable">
+				<div class="container">
+					<img src="img/unavailable.svg" alt="Программное обеспечение не доступно" class="builder-page__unavailable-img">
+					<div class="builder-page__unavailable-title tg-h3">Конструктор недоступен<br>на мобильных устройствах</div>
+					<div class="tg-p2">Чтобы воспользоваться конструктором кухни Кьюмен, откройте сайт на настольном компьютере</div>
+				</div>
 			</div>
 		</div>
 	</section>
