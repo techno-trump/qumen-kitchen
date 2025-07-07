@@ -1,7 +1,24 @@
-<!DOCTYPE html><html lang="en" data-mode="production"> <head><meta charset="UTF-8"><meta name="description" content="Index page"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/x-icon" href="favicon-32x32.png"><meta name="generator" content="Astro v4.16.18"><meta name="app-mode" content="production"><style>
+<!DOCTYPE html>
+<html lang="en" data-mode="production">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Index page">
+		<meta name="viewport" content="width=device-width">
+		<link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+		<meta name="generator" content="Astro v4.16.18">
+		<meta name="app-mode" content="production">
+
+		<style>
 			/* @import url(https://fonts.googleapis.com/css?family=Inter+Tight:regular,500,600,700,500italic&display=swap); */
 			@import url(https://fonts.googleapis.com/css?family=Geologica:300&display=swap);
-		</style><link rel="stylesheet" href="./assets/main.css"><script src="./libs/fslightbox.js" type="module"></script><script src="./libs/jquery-3.7.1.slim.min.js" type="module"></script><script src="./libs/jquery.validate.min.js" type="module"></script><script src="./assets/main.js" type="module"></script><title>Boilerplate</title><script type="application/json" data-elem="validate.messages">
+		</style>
+		<link rel="stylesheet" href="./assets/main.css">
+		<script src="./libs/fslightbox.js" type="module"></script>
+		<script src="./libs/jquery-3.7.1.slim.min.js" type="module"></script>
+		<script src="./libs/jquery.validate.min.js" type="module"></script>
+		<script src="./assets/main.js" type="module"></script>
+		<title>Boilerplate</title>
+		<script type="application/json" data-elem="validate.messages">
 			{
 				"required": "Не заполнено поле",
 				"email": "Введите корректный email",
@@ -9,10 +26,146 @@
 				"max-file-size": "Выбран слишком большой файл",
 				"extension": "Выбран недопустимый тип файла"
 			}
-		</script><style>.container[data-astro-cid-nnvtqp3h]{display:grid;gap:40px;padding:40px}h3[data-astro-cid-nnvtqp3h]{font-weight:600;margin-bottom:20px}</style></head> <body class="tg-regular">  <main>  <div class="container" data-astro-cid-nnvtqp3h> <div class="block" data-astro-cid-nnvtqp3h> <h3 data-astro-cid-nnvtqp3h>Pages</h3> <ol data-astro-cid-nnvtqp3h> <li data-astro-cid-nnvtqp3h><a href="./index.html" class="link" data-astro-cid-nnvtqp3h>Home</a></li> <li data-astro-cid-nnvtqp3h><a href="./policy.html" class="link" data-astro-cid-nnvtqp3h>Policy</a></li> <li data-astro-cid-nnvtqp3h><a href="./404.html" class="link" data-astro-cid-nnvtqp3h>404</a></li> <li data-astro-cid-nnvtqp3h><a href="./builder.html" class="link" data-astro-cid-nnvtqp3h>Builder</a></li> </ol> </div> <div class="block" data-astro-cid-nnvtqp3h> <h3 data-astro-cid-nnvtqp3h>Popups</h3> <ol data-astro-cid-nnvtqp3h> <li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('design-product-form')" data-astro-cid-nnvtqp3h>Design product form</button></li> <li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('cookies-agreement')" data-astro-cid-nnvtqp3h>Cookies agreement</button></li> <li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('fail-drawer')" data-astro-cid-nnvtqp3h>Fail drawer</button></li> <li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('success-drawer')" data-astro-cid-nnvtqp3h>Success drawer</button></li> </ol> </div> </div>  </main>  <div class="drawers"> <div class="drawer drawer_popup" data-drawer="success-drawer" data-lenis-prevent> <div class="drawer__panel drawer__panel" data-elem="drawer.panel"> <div class="drawer__header"> <div class="drawer__title tg-h3">Заявка успешно отправлена</div> <button type="button" class="drawer__close-btn btn btn_square btn_md btn_secondary" data-drawer-close="success-drawer"> <div class="btn__label btn__label_hidden">Закрыть окно</div> <div class="btn__icon icon-close"></div> </button> </div> <div class="drawer__body">
-Ваша заявка будет обработана в ближайшее время. Если у вас возникнут вопросы, пожалуйста, свяжитесь с нами по телефону или электронной почте.
-</div> </div> </div> <div class="drawer drawer_popup" data-drawer="fail-drawer" data-lenis-prevent> <div class="drawer__panel drawer__panel" data-elem="drawer.panel"> <div class="drawer__header"> <div class="drawer__title tg-h3">Заявку не удалось обработать</div> <button type="button" class="drawer__close-btn btn btn_square btn_md btn_secondary" data-drawer-close="fail-drawer"> <div class="btn__label btn__label_hidden">Закрыть окно</div> <div class="btn__icon icon-close"></div> </button> </div> <div class="drawer__body">
-Ваша заявка обработана с ошибкой. Попробуйте пожалуйста позже или воспользуйтесь другим каналом связи
-</div> </div> </div> <div class="drawer drawer_cookies cookies-agreement" data-drawer="cookies-agreement" data-lenis-prevent> <div class="drawer__panel cookies-agreement__panel" data-elem="drawer.panel"> <div class="cookies-agreement__text tg-caption-mini">
-Мы используем cookie, <br class="mob-break tablet-break">чтобы улучшить сайт для вас
-<!-- <a href="#" class="link"><span class="link__label">cookie</span></a> --> </div> <button id="cookies-agreement-btn" class="cookies-agreement__btn btn btn_rect btn_sm btn_primary" data-drawer-close="cookies-agreement"> <div class="btn__label">Хорошо</div> </button> </div> </div> <div class="drawer drawer_primary drawer_dialog" data-drawer="design-product-form" data-lenis-prevent> <div class="drawer__panel" data-elem="drawer.panel"> <form id="feedback-form" name="feedback-form" class="form form_drawer form_feedback" data-component="form"> <div class="form__header"> <div class="form__title tg-h3">Заказать <br class="mob-break">дизайн&#8209;проект</div> <div class="form__description" data-component="text-block-reveal">Оставьте заявку и наши менеджеры обязательно свяжутся с вами для дальнейших обсуждений</div> <button type="button" class="form__close-btn btn btn_square btn_md btn_secondary" data-drawer-close="design-product-form"> <div class="btn__label btn__label_hidden">Закрыть окно</div> <div class="btn__icon icon-close"></div> </button> </div> <div class="form__body"> <label class="field field_text form__field form__field_sm"> <input required type="text" name="name" class="field__input" placeholder=" "> <div class="field__label">Имя*</div> </label> <label class="field field_text form__field form__field_sm"> <input required data-rule-tel type="tel" name="tel" class="field__input" placeholder=" " data-component="tel-input"> <div class="field__label">Телефон*</div> </label> <label class="field field_text form__field form__field_lg"> <input required type="email" name="email" class="field__input" placeholder=" "> <div class="field__label">Почта*</div> </label> <label class="field field_textarea form__field form__field_lg"> <textarea required name="message" class="field__input" placeholder=" " rows="4"></textarea> <div class="field__label">Сообщение*</div> </label> <label class="files-field form__field form__field_lg" data-component="file-drop"> <input type="file" name="attachments" multiple accept=".gif,.jpeg,.jpg,.png,.doc,.pdf,.bmp,.tif,.txt,.rtf,.html,.doc,.docx,.odt,.ppt,.ppcx" data-rule-max-file-size="10240" data-rule-extension="gif|jpeg|jpg|png|doc|pdf|bmp|tif|txt|rtf|html|doc|docx|odt|ppt|ppcx" class="files-field__input"> <div class="files-field__body"> <div class="files-field__label">Файлы</div> <div class="files-field__selected" data-elem="file-drop.selected"></div> <ul class="files-field__conditions"> <li class="files-field__condition">Принимаемые форматы: gіf, jрg, jреg, рng, bmp, tіf, tхt, rtf, html, рdf, dос, dосх, оdt, ррt, ррсх.</li><li class="files-field__condition">Максимальный размер файла: 10 мб.</li> </ul> <div class="files-field__tip"> <div class="files-field__tip-inner">Перетащите файл сюда</div> </div> </div> <div class="files-field__icon icon-drop"></div> </label> </div> <div class="form__footer"> <label class="field field_checkbox form__field"> <div class="field__input cm-checkbox"> <input required name="commercial-notifications" type="checkbox" class="cm-checkbox__input"> <div class="cm-checkbox__body"></div> </div> <div class="field__info"> <div class="field__label">Даю согласие на получение <br class="mob-break">документов и&nbsp;уведомлений <br class="mob-break">на&nbsp;указанный&nbsp;E-mail&nbsp;/&nbsp;Телефон</div> </div> </label> <label class="field field_checkbox form__field"> <div class="field__input cm-checkbox"> <input required name="agreement" type="checkbox" class="cm-checkbox__input"> <div class="cm-checkbox__body"></div> </div> <div class="field__info"> <div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div> </div> </label> <button type="submit" class="btn btn_primary btn_rect btn_md"> <div class="btn__label">Отправить</div> </button> </div> </form> </div> </div> </div> <div class="page-drawers">  </div> </body></html> 
+		</script>
+	<style>.container[data-astro-cid-nnvtqp3h]{display:grid;gap:40px;padding:40px}h3[data-astro-cid-nnvtqp3h]{font-weight:600;margin-bottom:20px}</style></head>
+	<body class="tg-regular">
+		
+		<main>
+			
+	<div class="container" data-astro-cid-nnvtqp3h>
+		<div class="block" data-astro-cid-nnvtqp3h>
+			<h3 data-astro-cid-nnvtqp3h>Pages</h3>
+			<ol data-astro-cid-nnvtqp3h>
+				<li data-astro-cid-nnvtqp3h><a href="./index.html" class="link" data-astro-cid-nnvtqp3h>Home</a></li>
+				<li data-astro-cid-nnvtqp3h><a href="./policy.html" class="link" data-astro-cid-nnvtqp3h>Policy</a></li>
+				<li data-astro-cid-nnvtqp3h><a href="./404.html" class="link" data-astro-cid-nnvtqp3h>404</a></li>
+				<li data-astro-cid-nnvtqp3h><a href="./builder.html" class="link" data-astro-cid-nnvtqp3h>Builder</a></li>
+			</ol>
+		</div>
+		<div class="block" data-astro-cid-nnvtqp3h>
+			<h3 data-astro-cid-nnvtqp3h>Popups</h3>
+			<ol data-astro-cid-nnvtqp3h>
+				<li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('design-product-form')" data-astro-cid-nnvtqp3h>Design product form</button></li>
+				<li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('cookies-agreement')" data-astro-cid-nnvtqp3h>Cookies agreement</button></li>
+				<li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('fail-drawer')" data-astro-cid-nnvtqp3h>Fail drawer</button></li>
+				<li data-astro-cid-nnvtqp3h><button type="button" onclick="app.drawers.open('success-drawer')" data-astro-cid-nnvtqp3h>Success drawer</button></li>
+			</ol>
+		</div>
+	</div>
+
+		</main>
+		
+		<div class="drawers">
+			<div class="drawer drawer_popup" data-drawer="success-drawer" data-lenis-prevent>
+	<div class="drawer__panel drawer__panel" data-elem="drawer.panel">
+		<div class="drawer__header">
+			<div class="drawer__title tg-h3">Заявка успешно отправлена</div>
+			<button type="button" class="drawer__close-btn btn btn_square btn_md btn_secondary" data-drawer-close="success-drawer">
+				<div class="btn__label btn__label_hidden">Закрыть окно</div>
+				<div class="btn__icon icon-close"></div>
+			</button>
+		</div>
+		<div class="drawer__body">
+			Ваша заявка будет обработана в ближайшее время. Если у вас возникнут вопросы, пожалуйста, свяжитесь с нами по телефону или электронной почте.
+		</div>
+	</div>
+</div>
+			<div class="drawer drawer_popup" data-drawer="fail-drawer" data-lenis-prevent>
+	<div class="drawer__panel drawer__panel" data-elem="drawer.panel">
+		<div class="drawer__header">
+			<div class="drawer__title tg-h3">Заявку не удалось обработать</div>
+			<button type="button" class="drawer__close-btn btn btn_square btn_md btn_secondary" data-drawer-close="fail-drawer">
+				<div class="btn__label btn__label_hidden">Закрыть окно</div>
+				<div class="btn__icon icon-close"></div>
+			</button>
+		</div>
+		<div class="drawer__body">
+			Ваша заявка обработана с ошибкой. Попробуйте пожалуйста позже или воспользуйтесь другим каналом связи
+		</div>
+	</div>
+</div>
+			<div class="drawer drawer_cookies cookies-agreement" data-drawer="cookies-agreement" data-lenis-prevent>
+	<div class="drawer__panel cookies-agreement__panel" data-elem="drawer.panel">
+		<div class="cookies-agreement__text tg-caption-mini">
+			Мы используем cookie, <br class="mob-break tablet-break">чтобы улучшить сайт для вас
+			<!-- <a href="#" class="link"><span class="link__label">cookie</span></a> -->
+		</div>
+		<button id="cookies-agreement-btn" class="cookies-agreement__btn btn btn_rect btn_sm btn_primary" data-drawer-close="cookies-agreement">
+			<div class="btn__label">Хорошо</div>
+		</button>
+	</div>
+</div>
+			<div class="drawer drawer_primary drawer_dialog" data-drawer="design-product-form" data-lenis-prevent>
+	<div class="drawer__panel" data-elem="drawer.panel">
+		<form id="feedback-form" name="feedback-form" class="form form_drawer form_feedback" data-component="form">
+			<div class="form__header">
+				<div class="form__title tg-h3">Заказать <br class="mob-break">дизайн&#8209;проект</div>
+				<div class="form__description" data-component="text-block-reveal">Оставьте заявку и наши менеджеры обязательно свяжутся с вами для дальнейших обсуждений</div>
+				<button type="button" class="form__close-btn btn btn_square btn_md btn_secondary" data-drawer-close="design-product-form">
+					<div class="btn__label btn__label_hidden">Закрыть окно</div>
+					<div class="btn__icon icon-close"></div>
+				</button>
+			</div>
+			<div class="form__body">
+				<label class="field field_text form__field form__field_sm">
+					<input required type="text" name="name" class="field__input" placeholder=" ">
+					<div class="field__label">Имя*</div>
+				</label>
+				<label class="field field_text form__field form__field_sm">
+					<input required data-rule-tel type="tel" name="tel" class="field__input" placeholder=" " data-component="tel-input">
+					<div class="field__label">Телефон*</div>
+				</label>
+				<label class="field field_text form__field form__field_lg">
+					<input required type="email" name="email" class="field__input" placeholder=" ">
+					<div class="field__label">Почта*</div>
+				</label>
+				<label class="field field_textarea form__field form__field_lg">
+					<textarea required name="message" class="field__input" placeholder=" " rows="4"></textarea>
+					<div class="field__label">Сообщение*</div>
+				</label>
+				<label class="files-field form__field form__field_lg" data-component="file-drop">
+					<input type="file" name="attachments" multiple accept=".gif,.jpeg,.jpg,.png,.doc,.pdf,.bmp,.tif,.txt,.rtf,.html,.doc,.docx,.odt,.ppt,.ppcx" data-rule-max-file-size="10240" data-rule-extension="gif|jpeg|jpg|png|doc|pdf|bmp|tif|txt|rtf|html|doc|docx|odt|ppt|ppcx" class="files-field__input">
+					<div class="files-field__body">
+						<div class="files-field__label">Файлы</div>
+						<div class="files-field__selected" data-elem="file-drop.selected"></div>
+						<ul class="files-field__conditions">
+							<li class="files-field__condition">Принимаемые форматы: gіf, jрg, jреg, рng, bmp, tіf, tхt, rtf, html, рdf, dос, dосх, оdt, ррt, ррсх.</li><li class="files-field__condition">Максимальный размер файла: 10 мб.</li>
+						</ul>
+						<div class="files-field__tip">
+							<div class="files-field__tip-inner">Перетащите файл сюда</div>
+						</div>
+					</div>
+					<div class="files-field__icon icon-drop"></div>
+				</label>
+			</div>
+			<div class="form__footer">
+				<label class="field field_checkbox form__field">
+					<div class="field__input cm-checkbox">
+						<input required name="commercial-notifications" type="checkbox" class="cm-checkbox__input">
+						<div class="cm-checkbox__body"></div>
+					</div>
+					<div class="field__info">
+						<div class="field__label">Даю согласие на получение <br class="mob-break">документов и&nbsp;уведомлений <br class="mob-break">на&nbsp;указанный&nbsp;E-mail&nbsp;/&nbsp;Телефон</div>
+					</div>
+				</label>
+				<label class="field field_checkbox form__field">
+					<div class="field__input cm-checkbox">
+						<input required name="agreement" type="checkbox" class="cm-checkbox__input">
+						<div class="cm-checkbox__body"></div>
+					</div>
+					<div class="field__info">
+						<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+					</div>
+				</label>
+				<button type="submit" class="btn btn_primary btn_rect btn_md">
+					<div class="btn__label">Отправить</div>
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+		</div>
+		<div class="page-drawers">
+			
+		</div>
+	</body></html>

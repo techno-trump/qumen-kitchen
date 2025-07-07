@@ -7,6 +7,7 @@ export default defineConfig({
 	build: {
     format: 'file', // Генерация страниц как отдельных файлов
   },
+	compressHTML: false,
 	vite: {
     server: {
       proxy: {
