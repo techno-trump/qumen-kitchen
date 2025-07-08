@@ -41,17 +41,23 @@ const projects = [
 			meta: {
 				title: "Прямая кухня",
 				sizes: [{ title: "Размеры системы, м", size:	"3 × 2,14 × 0,6" }],
-				composition: "Прямая",
+				composition: {
+					label: "Прямая",
+					icon: "img/construction-types/strict.svg"
+				},
 				colorName: "Веллюто Капучино",
 				colorSrc: "img/projects/colors/01.svg",
 				sets: [
 					{
 						title: "Состав системы, шт.",
-						set: [ { title: "Напольный ящик", number: 5 }, { title: "Верхний ящик", number: 5 }, { title: "Пенал", number: 1 } ],
+						set: [
+							{ icon: "img/construction-types/floor-drawer.svg", title: "Напольный ящик", number: 5 },
+							{ icon: "img/construction-types/top-drawer.svg", title: "Верхний ящик", number: 5 },
+							{ icon: "img/construction-types/pencil-case.svg", title: "Пенал", number: 1 } ],
 					},
 					{
 						title: "Состав острова, шт.",
-						set: [ { title: "Напольный ящик", number: 3 } ],
+						set: [ { icon: "img/construction-types/floor-drawer.svg", title: "Напольный ящик", number: 3 } ],
 					},
 				],
 				prices: [
@@ -64,13 +70,20 @@ const projects = [
 			meta: {
 				title: "Прямая кухня",
 				sizes: [{ title: "Размеры системы, м", size:	"3 × 2,14 × 0,6" }],
-				composition: "Прямая",
+				composition: {
+						label: "Прямая",
+						icon: "img/construction-types/strict.svg"
+					},
 				colorName: "Веллюто Капучино",
 				colorSrc: "img/projects/colors/02.svg",
 				sets: [
 					{
 						title: "Состав системы, шт.",
-						set: [ { title: "Напольный ящик", number: 8 }, { title: "Верхний ящик", number: 5 }, { title: "Пенал", number: 1 } ],
+						set: [
+							{ icon: "img/construction-types/floor-drawer.svg", title: "Напольный ящик", number: 8 },
+							{ icon: "img/construction-types/top-drawer.svg", title: "Верхний ящик", number: 5 },
+							{ icon: "img/construction-types/pencil-case.svg", title: "Пенал", number: 1 }
+						],
 					}
 				],
 				prices: [
@@ -82,18 +95,27 @@ const projects = [
 			src: "img/projects/project-03", // "img/about-product/01-2200.webp"
 			meta: {
 				title: "Угловая кухня с островом",
-				sizes: [{ title: "Размеры системы, м", size:	"3,25 × 2,8 × 2,14 × 0,6 " }, { title: "Размеры острова, м", size:	"1,6 × 0,82 × 0,6" }],
-				composition: "Угловая с островом",
+				sizes: [
+					{ title: "Размеры системы, м", size:	"3,25 × 2,8 × 2,14 × 0,6 " }, { title: "Размеры острова, м", size:	"1,6 × 0,82 × 0,6" }
+				],
+				composition: {
+					label: "Угловая с островом",
+					icon: "img/construction-types/corner-island.svg"
+				},
 				colorName: "Графит",
 				colorSrc: "img/projects/colors/03.svg",
 				sets: [
 					{
 						title: "Состав системы, шт.",
-						set: [ { title: "Напольный ящик", number: 8 }, { title: "Верхний ящик", number: 6 }, { title: "Пенал", number: 2 } ],
+						set: [
+							{ icon: "img/construction-types/floor-drawer.svg", title: "Напольный ящик", number: 8 },
+							{ icon: "img/construction-types/top-drawer.svg", title: "Верхний ящик", number: 6 },
+							{ icon: "img/construction-types/pencil-case.svg", title: "Пенал", number: 2 }
+						],
 					},
 					{
 						title: "Состав острова, шт.",
-						set: [ { title: "Напольный ящик", number: 3 } ],
+						set: [ { icon: "img/construction-types/pencil-case.svg", title: "Напольный ящик", number: 3 } ],
 					},
 				],
 				prices: [
@@ -220,7 +242,7 @@ const faq = [
 			</div>
 			
 		</section>
-		<section id="advantages" class="about-product section-space-bottom" data-component="about-product" data-theme="dark">
+		<section id="advantages" class="about-product section-space-bottom" data-component="about-product" data-theme="light">
 			<div class="about-product__container">
 				<div class="container container_wide about-product__slider swiper" data-elem="about-product.slider">
 					<div class="swiper-wrapper">
@@ -331,8 +353,8 @@ const faq = [
 																										<div class="project-info-block">
 																											<div class="project-info-block__title">Компоновка</div>
 																											<div class="project-info-block__body project-composition">
-																												<div class="project-composition__icon icon-composition"></div>
-																												<div class="project-composition__title">{meta.composition}</div>
+																												<img src={meta.composition.icon} alt="Иконка компоновки" class="project-composition__icon" />
+																												<div class="project-composition__title">{meta.composition.label}</div>
 																											</div>
 																										</div>
 																										<div class="project-info-block">
@@ -350,9 +372,9 @@ const faq = [
 																													<div class="project-info-block__title">{title}</div>
 																													<div class="project-info-block__body project-set">
 																														{
-																															set.map(({ title, number }) => 
+																															set.map(({ title, number, icon }) => 
 																																<div class="project-set__row">
-																																	<div class="project-set__icon icon-builder"></div>
+																																	<img src={icon} alt="Иконка типа элемента конструктора" class="project-set__icon" />
 																																	<div class="project-set__title">{title}</div>
 																																	<div class="project-set__number">{number}</div>
 																																</div>)
@@ -397,7 +419,7 @@ const faq = [
 			</div>
 		</div>
 	</section>
-	<section id="steps" class="ideas section-space" data-component="ideas" data-theme="dark">
+	<section id="steps" class="ideas section-space" data-component="ideas" data-theme="light">
 		<div class="container ideas__container">
 			<div class="container container_wide ideas__info">
 				<div class="ideas__header tg-h2">
@@ -460,7 +482,7 @@ const faq = [
 			</div>
 		</div>
 	</section>
-	<section id="manuals" class="manuals section-space" data-component="manuals" data-theme="dark">
+	<section id="manuals" class="manuals section-space" data-component="manuals" data-theme="light">
 		<div class="container manuals__container">
 			<div class="manuals__title tg-h2" data-component="text-reveal">
 				<div class="line">Видеоинструкции</div>
@@ -496,7 +518,7 @@ const faq = [
 			</div>
 		</div>
 	</section>
-	<section class="manuals-video" data-theme="dark">
+	<section class="manuals-video">
 		{
 			manuals.map(({ videoSrc }, idx) =>
 				<iframe id={`manual-${idx + 1}`} class="manuals-video__item"
@@ -509,7 +531,7 @@ const faq = [
 				</iframe>)
 		}
 	</section>
-	<section id="builder" class="builder section-space" data-theme="dark">
+	<section id="builder" class="builder section-space" data-theme="light">
 		<div class="container builder__container">
 			<div class="builder__view">
 				<div class="builder__view-wrap ratio-wrap" data-component="parallax">
@@ -694,7 +716,7 @@ const faq = [
 			<img src="img/contact-form-bg.webp" alt="Фон для секции с формой обратной связи" class="contact-form-section__bg" data-component="parallax" loading="lazy">
 		</picture>
 		<div class="container container_wide contact-form-section__container">
-			<form id="feedback-form" name="feedback-form" class="form form_section form_feedback contact-form-section__form" data-component="form">
+			<form id="request-form" name="request-form" class="form form_section contact-form-section__form" data-component="form" data-callback="requestFormHandler">
 				<div class="form__header">
 					<div class="form__title tg-h2" data-component="text-reveal">
 						<div class="line">Остались</div>

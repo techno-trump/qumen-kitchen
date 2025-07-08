@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Конструктор кухни" description="Конструктор кухни" page='builder'>
-	<section class="builder-page">
-		<div class="container">
+	<section class="builder-page" data-theme="light">
+		<div class="container builder-page__container">
 			<div class="builder-page__header">
 				<div class="builder-page__title tg-h2">Конструктор кухни</div>
 				<div class="builder-page__actions">
@@ -12,9 +12,7 @@ import Layout from '../layouts/Layout.astro';
 					<button type="button" data-drawer-toggle="design-product-form"  class="btn btn_rect btn_primary btn_md"><span class="btn__label">Дизайн-проект</span></button>
 				</div>
 			</div>
-		
-			<div class="builder-page__body">
-				<div style="height: 100%; width: 100%" id="planplace_container"></div>
+			<div id="planplace_container" class="builder-page__body">
 				<script>
 					document.addEventListener('DOMContentLoaded', function () {
 						var params=decodeURIComponent(window.location.search.substring(1));

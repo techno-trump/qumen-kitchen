@@ -42,9 +42,7 @@
 	&__slide-inner {
 		position: relative;
 		--ratio: 54.21%;
-		
 		width: 100%;
-		
 		overflow: hidden;
 		cursor: grab;
 		@media (max-width: config.$mbpT) {
@@ -54,6 +52,9 @@
 		@media (max-width: config.$mbpMM) {
 			--ratio: 150%;
 			border-radius: mi.rem(16);
+		}
+		& img {
+			pointer-events: none;
 		}
 	}
 	&__slide-btn {
@@ -282,21 +283,22 @@
 }
 .project-composition, .project-color {
 	display: grid;
-	align-content: center;
+	align-items: center;
 	grid-auto-flow: column;
 	gap: mi.rem(4);
 	&__icon {
-		width: mi.rem(14);
-		height: mi.rem(14);
-		font-size: mi.rem(14);
+		width: mi.rem(12);
+		height: mi.rem(16);
+		object-fit: contain;
 	}
 }
 .project-color {
 	&__view {
-		justify-self: center;
 		width: mi.rem(12);
 		height: mi.rem(12);
+		object-fit: contain;
 		border-radius: 50%;
+		margin: mi.rem(2) 0;
 	}
 }
 .project-set {
@@ -307,8 +309,10 @@
 		align-items: center;
 	}
 	&__icon {
-		font-size: mi.rem(14);
+		width: mi.rem(12);
+		height: mi.rem(16);
 		margin-right: mi.rem(4);
+		object-fit: contain;
 	}
 	&__title {
 		flex: 1 1 auto;

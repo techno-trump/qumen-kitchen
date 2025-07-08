@@ -63,9 +63,6 @@
 			margin-bottom: mi.rem(20);
 		}
 	}
-	:root[data-page="index"] &__logo {
-		pointer-events: none;
-	}
 	&__nav {
 		grid-area: nav;
 		display: grid;

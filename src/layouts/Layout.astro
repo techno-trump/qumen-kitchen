@@ -48,6 +48,20 @@ const mode = import.meta.env.MODE as ("development" | "production");
 				"extension": "Выбран недопустимый тип файла"
 			}
 		</script>
+		<script>
+			declare global {
+				interface Window {
+					projectFormHandler: (form: HTMLElement) => void;
+					requestFormHandler: (form: HTMLElement) => void;
+				}
+			}
+			window.projectFormHandler = function(form: HTMLElement) {
+				console.log(form);
+			}
+			window.requestFormHandler = function(form: HTMLElement) {
+				console.log(form);
+			}
+		</script>
 	</head>
 	<body class="tg-regular">
 		{empty ? null : <Header page={page}></Header>}

@@ -3,9 +3,16 @@ let observer = null;
 const stack = [];
 const map = new WeakMap();
 // Создаем наблюдатель
+if (document.readyState == "interactive") {
+	init();
+} else {
+	window.addEventListener("DOMContentLoaded", init);
+}
 
-window.addEventListener("resize", rebuildObserver);
-rebuildObserver();
+function init() {
+	window.addEventListener("resize", rebuildObserver);
+	rebuildObserver();
+}
 
 function rebuildObserver() {
 	if (!header) return;

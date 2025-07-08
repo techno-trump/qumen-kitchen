@@ -2,7 +2,13 @@
 @use "./mixins.scss" as mi;
 
 .article {
-	padding: calc(var(--section-space) * 2) 0;
+	padding: mi.rem(104) 0 calc(var(--section-space) * 2);
+	@media (max-width: config.$mbpT) {
+		padding: mi.rem(80) 0 calc(var(--section-space) * 2);
+	}
+	@media (max-width: config.$mbpMM) {
+		padding: mi.rem(70) 0 calc(var(--section-space) * 2);
+	}
 	&__container {
 		display: grid;
 		grid-template-columns: 100%;
@@ -12,7 +18,6 @@
 		}
 	}
 	&__widget-anchor-wrapper {
-		
 		align-self: start;
 		display: grid;
 		align-items: end;
@@ -33,34 +38,46 @@
 	&__inner {
 		max-width: mi.rem(830);
 	}
-	&__header {
-	}
 	&__body {
 		display: grid;
 		gap: mi.rem(30);
 	}
-	&__title {
+	& h1 {
+		font-size: mi.rem(42);
+		line-height: 1;
 		margin-bottom: mi.rem(30);
+		@media (max-width: config.$mbpMM) {
+			font-size: mi.rem(24);
+		}
 	}
 	&__block {
 	}
-	&__block-title {
-		margin-bottom: mi.rem(20);
-	}
-	&__block-body {
-	}
-	&__list-title {
-	}
-}
-.article-ol {
-	counter-reset: item-number;
-	list-style: none;
-	display: grid;
-	gap: mi.rem(10);
-	&__item {
-		counter-increment: item-number;
-		&::before {
-			content: counter(item-number) ". ";
+	&__body {
+		h2:not(:last-child) {
+			font-size: mi.rem(32);
+			line-height: 1;
+			margin-bottom: mi.rem(20);
+			@media (max-width: config.$mbpT) {
+				font-size: mi.rem(32);
+			}
+			@media (max-width: config.$mbpMM) {
+				font-size: mi.rem(20);
+			}
+		}
+		p:not(:last-child) {
+			margin-bottom: mi.rem(10);
+		}
+		ol {
+			counter-reset: item-number;
+			list-style: none;
+			display: grid;
+			gap: mi.rem(10);
+			li {
+				counter-increment: item-number;
+				&::before {
+					content: counter(item-number) ". ";
+				}
+			}
 		}
 	}
 }

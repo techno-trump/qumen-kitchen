@@ -96,14 +96,16 @@ window.addEventListener("dragleave", ({ target }) => {
 			if (!entrees.size) instances.forEach((instance) => instance.setActive(false));
 		});
 
-
-document.querySelectorAll(`[data-component~="file-drop"]`).forEach(root => new FileDrop(root));
-
-function getMaxFileSize(elem) {
-	const value = elem.getAttribute("data-max-file-size");
-	if (!value) return value;
-	return value * 1024;
+if (document.readyState == "interactive") {
+	init();
+} else {
+	window.addEventListener("DOMContentLoaded", init);
 }
+
+function init() {
+	document.querySelectorAll(`[data-component~="file-drop"]`).forEach(root => new FileDrop(root));
+}
+
 function getDropedFiles(event) {
 	return event.dataTransfer.files;
 }

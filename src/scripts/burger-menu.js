@@ -2,9 +2,11 @@ import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase.js";
 gsap.registerPlugin(CustomEase);
 
-app.drawers.on("afterInit", () => init());
-
-
+if (document.readyState == "interactive") {
+	app.drawers.on("afterInit", () => init());
+} else {
+	window.addEventListener("DOMContentLoaded", () => app.drawers.on("afterInit", () => init()));
+}
 
 function init() {
 	const drawer = app.drawers.get("navigation");

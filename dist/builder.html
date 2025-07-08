@@ -27,21 +27,8 @@
 				"extension": "Выбран недопустимый тип файла"
 			}
 		</script>
-	<script type="module">document.addEventListener("DOMContentLoaded", function() {
-  var params = decodeURIComponent(window.location.search.substring(1));
-  var planplace_container = document.getElementById("planplace_container");
-  var iframe = document.createElement("iframe");
-  iframe.id = "planplace";
-  iframe.allowFullscreen = true;
-  iframe.style.width = "100%";
-  iframe.style.height = "100%";
-  iframe.style.minHeight = "700px";
-  iframe.style.border = "0";
-  iframe.src = "https://planplace.ru/clients/35218700/";
-  if (params !== "") iframe.src = iframe.src + "?" + params;
-  planplace_container?.appendChild(iframe);
-});
-</script></head>
+		
+	<script type="module" src="/_astro/hoisted.glpHPIPj.js"></script></head>
 	<body class="tg-regular">
 		<header id="header" class="header dark-context" data-page="builder">
 	<div class="header__underlay">
@@ -182,8 +169,8 @@
 </header>
 		<main>
 			
-	<section class="builder-page">
-		<div class="container">
+	<section class="builder-page" data-theme="light">
+		<div class="container builder-page__container">
 			<div class="builder-page__header">
 				<div class="builder-page__title tg-h2">Конструктор кухни</div>
 				<div class="builder-page__actions">
@@ -191,9 +178,7 @@
 					<button type="button" data-drawer-toggle="design-product-form" class="btn btn_rect btn_primary btn_md"><span class="btn__label">Дизайн-проект</span></button>
 				</div>
 			</div>
-		
-			<div class="builder-page__body">
-				<div style="height: 100%; width: 100%" id="planplace_container"></div>
+			<div id="planplace_container" class="builder-page__body">
 				
 				<div class="builder-page__msg tg-p2">Для создания проекта своей кухни<br>воспользуйтесь 3D-конструктором,<br>который расположен на странице.</div>
 			</div>
@@ -323,7 +308,7 @@
 </div>
 			<div class="drawer drawer_primary drawer_dialog" data-drawer="design-product-form" data-lenis-prevent>
 	<div class="drawer__panel" data-elem="drawer.panel">
-		<form id="feedback-form" name="feedback-form" class="form form_drawer form_feedback" data-component="form">
+		<form id="project-form" name="project-form" class="form form_drawer" data-component="form" data-callback="projectFormHandler">
 			<div class="form__header">
 				<div class="form__title tg-h3">Заказать <br class="mob-break">дизайн&#8209;проект</div>
 				<div class="form__description" data-component="text-block-reveal">Оставьте заявку и наши менеджеры обязательно свяжутся с вами для дальнейших обсуждений</div>

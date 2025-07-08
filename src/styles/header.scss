@@ -70,7 +70,7 @@
 		background-color: var(--color-sf-light-blur);
 		backdrop-filter: blur(80px);
 		:root._initialized & {
-			transition: transform cubic-bezier(0, 0.25, 0, 1) 0.8s;
+			transition: transform cubic-bezier(0.5, 0,0,1) 0.8s;
 		}
 		transform: translateX(-100%);
 		//animation: hide-header-menu 0.8s 0.4s cubic-bezier(0, 0.25, 0, 1) forwards;
@@ -258,15 +258,20 @@
 			--width: #{mi.rem(84)};
 		}
 	}
-	[data-page="index"] &__logos {
-		pointer-events: none;
-	}
 	&__container {
 		display: grid;
 		justify-content: space-between;
 		grid-auto-flow: column;
 		padding-top: mi.rem(20);
 		padding-bottom: mi.rem(20);
+		@media (max-width: config.$mbpT) {
+			padding-top: mi.rem(8);
+			padding-bottom: mi.rem(8);
+		}
+		@media (max-width: config.$mbpMM) {
+			padding-top: mi.rem(6);
+			padding-bottom: mi.rem(6);
+		}
 	}
 	&__menu {
 		position: fixed;

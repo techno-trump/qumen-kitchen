@@ -64,39 +64,33 @@ const privacy = [
 			</div>
 			<div class="article__inner">
 				<div class="article__header">
-					<h1 class="article__title tg-h2">Политика обработки<br>персональных данных</h1>
+					<h1>Политика обработки<br>персональных данных</h1>
 				</div>
-				<div class="article__body">
-					<div class="article__block">
-						<h2 class="article__block-title tg-h3">Термины и принятые сокращения</h2>
-						<div class="article__block-body tg-p1">
-							<ol class="article-ol">
-								{
-									terms.map(item => <li class="article-ol__item">{item}</li>)
-								}
-							</ol>
-						</div>
+				<div class="article__body tg-p1">
+					<div>
+						<h2>Термины и принятые сокращения</h2>
+						<ol class="article-ol">
+							{
+								terms.map(item => <li class="article-ol__item">{item}</li>)
+							}
+						</ol>
 					</div>
-					<div class="article__block">
-						<h2 class="article__block-title tg-h3">Общие положения</h2>
-						<div class="article__block-body tg-p1">
-							<ol class="article-ol">
-								{
-									provisions.map(item => <li class="article-ol__item">{item}</li>)
-								}
-							</ol>
-						</div>
+					<div>
+						<h2>Общие положения</h2>
+						<ol>
+							{
+								provisions.map(item => <li>{item}</li>)
+							}
+						</ol>
 					</div>
-					<div class="article__block">
-						<h2 class="article__block-title tg-h3">Принципы обработки<br>персональных данных</h2>
-						<div class="article__block-body tg-p1">
-							<div class="article__list-title">Обработка персональных данных у Оператора осуществляется на основе следующих принципов:</div>
-							<ol class="article-ol">
-								{
-									privacy.map(item => <li class="article-ol__item">{item}</li>)
-								}
-							</ol>
-						</div>
+					<div>
+						<h2>Принципы обработки<br>персональных данных</h2>
+						<p>Обработка персональных данных у Оператора осуществляется на основе следующих принципов:</p>
+						<ol>
+							{
+								privacy.map(item => <li>{item}</li>)
+							}
+						</ol>
 					</div>
 				</div>
 			</div>
