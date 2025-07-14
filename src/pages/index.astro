@@ -128,12 +128,12 @@ const projects = [
 ];
 
 const ideas = [
-	{ title: "Модули", src: "video.mp4" },
-	{ title: "Наполнение", src: "video.mp4" },
-	{ title: "Готовая кухня", src: "video.mp4" },
-	{ title: "Конструктор", src: "video.mp4" },
-	{ title: "Спецификация", src: "video.mp4" },
-	{ title: "Маркетплейсы", src: "video.mp4" }
+	{ title: "Модули", src: "http://qmen.farbatest.com//images/modules_01.webm" },
+	{ title: "Наполнение", src: "http://qmen.farbatest.com//images/modules_02.webm" },
+	{ title: "Готовая кухня", src: "http://qmen.farbatest.com//images/modules_03.webm" },
+	{ title: "Конструктор", src: "http://qmen.farbatest.com//images/modules_03.webm" },
+	{ title: "Спецификация", src: "http://qmen.farbatest.com//images/modules_05.webm" },
+	{ title: "Маркетплейсы", src: "http://qmen.farbatest.com//images/modules_06.webm" }
 ];
 const manuals = [
 	{
@@ -229,7 +229,6 @@ const faq = [
 						<img src="img/hero-1024.webp" alt="Hero block background" class="ratio-wrap__item" loading="lazy">
 					</picture>
 				</div>
-				<div class="hero__overlay"></div>
 			</div>
 			<div class="container hero__container">
 				<h1 class="hero__title tg-h1" data-component="text-reveal" data-immediate="init">
@@ -240,7 +239,7 @@ const faq = [
 				<div class="hero__widget-anchor" data-elem="builder-widget.top-anchor">
 				</div>
 			</div>
-			
+			<div class="hero__overlay"></div>
 		</section>
 		<section id="advantages" class="about-product section-space-bottom" data-component="about-product" data-theme="light">
 			<div class="about-product__container">
@@ -318,7 +317,7 @@ const faq = [
 			</div>
 			<div class="projects__header tg-h2">
 				<div class="projects__title projects__title_desc" data-component="text-reveal">
-					<div class="line">Готовые проекты кухонь</div>
+					<div class="line">Готовые<br>проекты кухонь</div>
 				</div>
 				<div class="projects__title projects__title_tablet" data-component="text-reveal">
 					<div class="line">Готовые</div>
@@ -592,7 +591,7 @@ const faq = [
 							[
 								{ href: "https://www.ozon.ru/seller/egregor-kyumen-2512784/products/?miniapp=seller_2512784", src: "img/marketplaces/ozon.svg", label: "Ozon" },
 								{ href: "https://www.wildberries.ru/seller/250000361", src: "img/marketplaces/wb.svg", label: "Wildberries" },
-								{ href: "#", src: "img/marketplaces/jmarket.svg", label: "Я. Маркет" },
+								{ href: "https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514", src: "img/marketplaces/jmarket.svg", label: "Я. Маркет" },
 							].map(({ href, src, label }) => <a href={href} class="marketplaces-section__link link" target="_blank" title={label}>
 								<img src={src} alt={label} class="marketplaces-section__link-view" loading="lazy">
 								<div class="link__label" set:html={label}></div>
@@ -669,7 +668,7 @@ const faq = [
 									{ href: "#", label: "Telegram", icon: "icon-telegram" },
 									{ href: "#", label: "VK", icon: "icon-vk" },
 									{ href: "#", label: "WatsApp", icon: "icon-watsapp" }
-								].map(({ href, label, icon }) => <a href={href} class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark">
+								].map(({ href, label, icon }) => <a href={href} class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark" target="_blank">
 																										<div class="btn__label btn__label_hidden">{label}</div>
 																										<div class:list={["btn__icon", icon]}></div>
 																									</a>)
@@ -776,7 +775,7 @@ const faq = [
 							<div class="cm-checkbox__body"></div>
 						</div>
 						<div class="field__info">
-							<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+							<div class="field__label">Согласен на <a href="politics" class="link"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
 						</div>
 					</label>
 					<button type="submit" class="btn btn_primary btn_rect btn_md">

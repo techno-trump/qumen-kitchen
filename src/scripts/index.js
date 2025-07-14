@@ -35,8 +35,8 @@ function init() {
 			scrollTrigger: {
 				trigger: ".about-product",
 				scrub: 0.5,
-				start: "top bottom",
-				end: "bottom-=10% bottom"
+				start: "top+=10% bottom",
+				end: "top top",
 			}
 		}
 	)
@@ -59,6 +59,8 @@ function init() {
 	app.drawers.init();
 
 	app.drawers.get("marketplaces")?.setOptions({ "lockPageScroll": false });
+	app.drawers.get("message-us")?.setOptions({ "lockPageScroll": false });
+	
 
 	app.drawers.get("cookies-agreement")?.setOptions({ closeOnUnderlayClick: false });
 	app.drawers.get("cookies-agreement")?.on("close", () => {

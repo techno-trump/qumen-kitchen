@@ -8,7 +8,7 @@
 	display: grid;
 	&__overlay {
 		position: absolute;
-		z-index: 1;
+		z-index: 2;
 		left: 0;
 		top: 0;
 		width: 100%;
@@ -22,18 +22,19 @@
 	}
 	&__bg {
 		position: absolute;
+		z-index: 0;
 		display: flex;
 		flex-direction: column;
 		left: 0;
 		top: 0;
 		width: 100%;
 		min-height: 110%;
-		z-index: 0;
 		--ratio: 73.2%;
 		&:before, &:after {
 			content: "";
 			display: block;
 			position: absolute;
+			z-index: 0;
 		}
 		&:after {
 			z-index: 1;
@@ -42,12 +43,15 @@
 			left: 0;
 			width: 100%;
 			height: mi.rem(525);
+			min-height: calc(50 * var(--vhu, 1vh));
+			min-height: calc(50 * var(--vhu, 1svh));
 			background: linear-gradient(180deg, rgba(241, 239, 235, 0) 0%, #F1EFEB 81.07%);
 			backdrop-filter: blur(0.7114583253860474px);
 			@media (max-width: config.$mbpT) {
 				top: calc(56 * var(--vhu, 1vh));
 				top: calc(56 * var(--vhu, 1svh));
 				height: mi.rem(420);
+				
 			}
 			@media (max-width: config.$mbpMM) {
 				top: calc(65 * var(--vhu, 1vh));
@@ -69,10 +73,13 @@
 		flex: 1 1 auto;
 	}
 	&__container {
+		position: relative;
+		z-index: 0;
 		align-self: start;
 		display: grid;
 		grid-template-columns: 1fr auto;
 		align-content: end;
+		align-items: end;
 		justify-content: space-between;
 		color: var(--color-text-light);
 		//min-height: calc(var(--vhu, 1vh) * 100);
@@ -83,19 +90,22 @@
 		@media (max-width: config.$mbpT) {
 			grid-template-columns: 1fr;
 			align-content: space-between;
-			padding: mi.rem(114) 0 mi.rem(32);
+			padding: mi.rem(114) 0 mi.rem(34);
 		}
 		@media (max-width: config.$mbpMM) {
 			padding: mi.rem(108) 0 mi.rem(20);
 		}
 	}
+	&__title {
+		
+	}
 	&__widget-anchor {
 		position: relative;
 		z-index: 100;
-		align-self: end;
-		min-height: mi.rem(180);
+		min-height: mi.rem(210);
+		width: 100%;
 		@media (max-width: config.$mbpT) {
-			min-height: mi.rem(220);
+			min-height: mi.rem(225);
 		}
 	}
 }

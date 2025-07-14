@@ -28,7 +28,13 @@
 			}
 		</script>
 		
-	<script type="module" src="/_astro/hoisted.glpHPIPj.js"></script></head>
+	<script type="module">window.projectFormHandler = function(form) {
+  console.log(form);
+};
+window.requestFormHandler = function(form) {
+  console.log(form);
+};
+</script></head>
 	<body class="tg-regular">
 		<header id="header" class="header dark-context" data-page="builder">
 	<div class="header__underlay">
@@ -118,13 +124,13 @@
 					<span class="link__icon icon-shopper  btn-icon"></span>
 				</button>
 				<div class="quick-access__popup" data-elem="drawer.panel">
-					<a href="#" class="quick-access__item" title="Ozon">
+					<a href="https://www.ozon.ru/seller/egregor-kyumen-2512784/products/?miniapp=seller_2512784" class="quick-access__item" target="_blank" title="Ozon">
 							<img src="img/marketplaces/ozon.svg" alt="Ozon" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Ozon</div>
-						</a><a href="#" class="quick-access__item" title="Wildberries">
+						</a><a href="https://www.wildberries.ru/seller/250000361" class="quick-access__item" target="_blank" title="Wildberries">
 							<img src="img/marketplaces/wb.svg" alt="Wildberries" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Wildberries</div>
-						</a><a href="#" class="quick-access__item" title="Я. Маркет">
+						</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="quick-access__item" target="_blank" title="Я. Маркет">
 							<img src="img/marketplaces/jmarket.svg" alt="Я. Маркет" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Я. Маркет</div>
 						</a>
@@ -179,7 +185,21 @@
 				</div>
 			</div>
 			<div id="planplace_container" class="builder-page__body">
-				
+				<script>
+					document.addEventListener('DOMContentLoaded', function () {
+						var params=decodeURIComponent(window.location.search.substring(1));
+						var planplace_container = document.getElementById('planplace_container');
+						var iframe=document.createElement('iframe');
+						iframe.id='planplace';
+						iframe.allowFullscreen=true;
+						iframe.style.width="100%";
+						iframe.style.height="100%";
+						iframe.style.minHeight="700px";
+						iframe.style.border="0";
+						iframe.src='https://planplace.ru/clients/35218700/';
+						if (params !=='') iframe.src=iframe.src + "?" + params; planplace_container?.appendChild(iframe);
+					})
+				</script>
 				<div class="builder-page__msg tg-p2">Для создания проекта своей кухни<br>воспользуйтесь 3D-конструктором,<br>который расположен на странице.</div>
 			</div>
 			<div class="builder-page__unavailable">
@@ -202,7 +222,7 @@
 		<figcaption class="logo__caption">Qumen Kitchen</figcaption>
 	</figure>
 </a>
-			<div class="footer__policy"><a href="#" class="link"><span class="link__label">Политика обработки<br>персональных данных</span></a></div>
+			<div class="footer__policy"><a href="#" class="link" target="_blank"><span class="link__label">Политика обработки<br>персональных данных</span></a></div>
 			<nav class="footer__nav">
 				<a href="#advantages" class="link footer__nav-item"><span class="link__label">Преимущества</span></a><a href="#projects" class="link footer__nav-item"><span class="link__label">Проекты</span></a><a href="#steps" class="link footer__nav-item"><span class="link__label">Этапы</span></a><a href="#manuals" class="link footer__nav-item"><span class="link__label">Видеоинструкции</span></a><a href="#builder" class="link footer__nav-item"><span class="link__label">Конструктор</span></a><a href="#factory" class="link footer__nav-item"><span class="link__label">Производство</span></a><a href="#faq" class="link footer__nav-item"><span class="link__label">FAQ</span></a>
 			</nav>
@@ -211,7 +231,7 @@
 				<div class="contacts__list">
 					<a href="mailto:help@tdegregor.ru" class="link"><span class="link__label">help@tdegregor.ru</span></a>
 					<a href="tel:88001013330" class="link"><span class="link__label">8 800 101-33-30</span></a>
-					<a href="https://go.2gis.com/hJ83n" class="link"><span class="link__label">Нижегородская область,<br>п. Садовский, д. 101, ком. 21</span></a>
+					<a href="https://go.2gis.com/hJ83n" class="link" target="_blank"><span class="link__label">Нижегородская область,<br>п. Садовский, д. 101, ком. 21</span></a>
 				</div>
 			</div>
 			<div class="marketplaces footer__marketplaces">
@@ -221,7 +241,7 @@
 		</a><a href="https://www.wildberries.ru/seller/250000361" class="marketplaces__item link" target="_blank" title="Wildberries">
 			<img src="img/marketplaces/wb-mono.svg" alt="Wildberries" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Wildberries</div>
-		</a><a href="#" class="marketplaces__item link" target="_blank" title="Я. Маркет">
+		</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="marketplaces__item link" target="_blank" title="Я. Маркет">
 			<img src="img/marketplaces/jmarket-mono.svg" alt="Я. Маркет" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Я. Маркет</div>
 		</a>
@@ -255,13 +275,13 @@
 		</a><a href="https://www.wildberries.ru/seller/250000361" class="marketplaces__item link" target="_blank" title="Wildberries">
 			<img src="img/marketplaces/wb-mono.svg" alt="Wildberries" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Wildberries</div>
-		</a><a href="#" class="marketplaces__item link" target="_blank" title="Я. Маркет">
+		</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="marketplaces__item link" target="_blank" title="Я. Маркет">
 			<img src="img/marketplaces/jmarket-mono.svg" alt="Я. Маркет" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Я. Маркет</div>
 		</a>
 </div>
 			<div class="footer__made-by">
-				<a href="#" class="link"><span class="link__label">Сделано в <strong>VZDH</strong></span></a>
+				<a href="https://vzdh.rocks/" target="_blank" class="link"><span class="link__label">Сделано в <strong>VZDH</strong></span></a>
 			</div>
 		</div>
 	</div>
@@ -365,7 +385,7 @@
 						<div class="cm-checkbox__body"></div>
 					</div>
 					<div class="field__info">
-						<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+						<div class="field__label">Согласен на <a href="politics" class="link"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
 					</div>
 				</label>
 				<button type="submit" class="btn btn_primary btn_rect btn_md">

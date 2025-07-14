@@ -73,10 +73,10 @@ const { page } = Astro.props;
 				<div class="quick-access__popup" data-elem="drawer.panel">
 					{
 						[
-							{ href: "#", src: "img/marketplaces/ozon.svg", label: "Ozon" },
-							{ href: "#", src: "img/marketplaces/wb.svg", label: "Wildberries" },
-							{ href: "#", src: "img/marketplaces/jmarket.svg", label: "Я. Маркет" },
-						].map(({ href, src, label }) => <a href={href} class="quick-access__item" title={label}>
+							{ href: "https://www.ozon.ru/seller/egregor-kyumen-2512784/products/?miniapp=seller_2512784", src: "img/marketplaces/ozon.svg", label: "Ozon" },
+							{ href: "https://www.wildberries.ru/seller/250000361", src: "img/marketplaces/wb.svg", label: "Wildberries" },
+							{ href: "https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514", src: "img/marketplaces/jmarket.svg", label: "Я. Маркет" },
+						].map(({ href, src, label }) => <a href={href} class="quick-access__item" target="_blank" title={label}>
 							<img src={src} alt={label} class="quick-access__item-icon">
 							<div class="quick-access__item-label">{label}</div>
 						</a>)

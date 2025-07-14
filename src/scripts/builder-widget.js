@@ -64,7 +64,7 @@ function init() {
 			return {
 				left: `${topAnchorBcr.left}px`,
 				right: `${Math.max(document.documentElement.offsetWidth - bottomAnchorBcr.right, 20)}px`,
-				top: `${Math.min(topAnchorBcr.top - mainBcr.top, window.innerHeight - 20 - rem / 16 * 60)}px`,
+				top: `${Math.max(topAnchorBcr.top - mainBcr.top, 10)}px`, // + topAnchorBcr.height
 				bottom: `${document.documentElement.offsetHeight - (bottomAnchorBcr.bottom - bodyBcr.top)}px`
 			};
 		}

@@ -28,7 +28,13 @@
 			}
 		</script>
 		
-	<script type="module" src="/_astro/hoisted.mS1ZopMs.js"></script></head>
+	<script type="module">window.projectFormHandler = function(form) {
+  console.log(form);
+};
+window.requestFormHandler = function(form) {
+  console.log(form);
+};
+</script></head>
 	<body class="tg-regular">
 		<header id="header" class="header dark-context" data-page="index">
 	<div class="header__underlay">
@@ -118,13 +124,13 @@
 					<span class="link__icon icon-shopper  btn-icon"></span>
 				</button>
 				<div class="quick-access__popup" data-elem="drawer.panel">
-					<a href="#" class="quick-access__item" title="Ozon">
+					<a href="https://www.ozon.ru/seller/egregor-kyumen-2512784/products/?miniapp=seller_2512784" class="quick-access__item" target="_blank" title="Ozon">
 							<img src="img/marketplaces/ozon.svg" alt="Ozon" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Ozon</div>
-						</a><a href="#" class="quick-access__item" title="Wildberries">
+						</a><a href="https://www.wildberries.ru/seller/250000361" class="quick-access__item" target="_blank" title="Wildberries">
 							<img src="img/marketplaces/wb.svg" alt="Wildberries" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Wildberries</div>
-						</a><a href="#" class="quick-access__item" title="Я. Маркет">
+						</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="quick-access__item" target="_blank" title="Я. Маркет">
 							<img src="img/marketplaces/jmarket.svg" alt="Я. Маркет" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Я. Маркет</div>
 						</a>
@@ -228,7 +234,6 @@
 						<img src="img/hero-1024.webp" alt="Hero block background" class="ratio-wrap__item" loading="lazy">
 					</picture>
 				</div>
-				<div class="hero__overlay"></div>
 			</div>
 			<div class="container hero__container">
 				<h1 class="hero__title tg-h1" data-component="text-reveal" data-immediate="init">
@@ -239,7 +244,7 @@
 				<div class="hero__widget-anchor" data-elem="builder-widget.top-anchor">
 				</div>
 			</div>
-			
+			<div class="hero__overlay"></div>
 		</section>
 		<section id="advantages" class="about-product section-space-bottom" data-component="about-product" data-theme="light">
 			<div class="about-product__container">
@@ -353,7 +358,7 @@
 			</div>
 			<div class="projects__header tg-h2">
 				<div class="projects__title projects__title_desc" data-component="text-reveal">
-					<div class="line">Готовые проекты кухонь</div>
+					<div class="line">Готовые<br>проекты кухонь</div>
 				</div>
 				<div class="projects__title projects__title_tablet" data-component="text-reveal">
 					<div class="line">Готовые</div>
@@ -616,17 +621,17 @@
 				<div class="ideas__slider swiper" data-elem="ideas.slider">
 					<div class="swiper-wrapper ideas__slider-wrapper">
 						<div class="swiper-slide ideas__slide ratio-wrap">
-								<video playsinline muted="muted" preload="meta" src="video.mp4" class="ratio-wrap__item" title="Модули"></video>
+								<video playsinline muted="muted" preload="meta" src="http://qmen.farbatest.com//images/modules_01.webm" class="ratio-wrap__item" title="Модули"></video>
 							</div><div class="swiper-slide ideas__slide ratio-wrap">
-								<video playsinline muted="muted" preload="meta" src="video.mp4" class="ratio-wrap__item" title="Наполнение"></video>
+								<video playsinline muted="muted" preload="meta" src="http://qmen.farbatest.com//images/modules_02.webm" class="ratio-wrap__item" title="Наполнение"></video>
 							</div><div class="swiper-slide ideas__slide ratio-wrap">
-								<video playsinline muted="muted" preload="meta" src="video.mp4" class="ratio-wrap__item" title="Готовая кухня"></video>
+								<video playsinline muted="muted" preload="meta" src="http://qmen.farbatest.com//images/modules_03.webm" class="ratio-wrap__item" title="Готовая кухня"></video>
 							</div><div class="swiper-slide ideas__slide ratio-wrap">
-								<video playsinline muted="muted" preload="meta" src="video.mp4" class="ratio-wrap__item" title="Конструктор"></video>
+								<video playsinline muted="muted" preload="meta" src="http://qmen.farbatest.com//images/modules_03.webm" class="ratio-wrap__item" title="Конструктор"></video>
 							</div><div class="swiper-slide ideas__slide ratio-wrap">
-								<video playsinline muted="muted" preload="meta" src="video.mp4" class="ratio-wrap__item" title="Спецификация"></video>
+								<video playsinline muted="muted" preload="meta" src="http://qmen.farbatest.com//images/modules_05.webm" class="ratio-wrap__item" title="Спецификация"></video>
 							</div><div class="swiper-slide ideas__slide ratio-wrap">
-								<video playsinline muted="muted" preload="meta" src="video.mp4" class="ratio-wrap__item" title="Маркетплейсы"></video>
+								<video playsinline muted="muted" preload="meta" src="http://qmen.farbatest.com//images/modules_06.webm" class="ratio-wrap__item" title="Маркетплейсы"></video>
 							</div>
 					</div>
 				</div>
@@ -846,7 +851,7 @@
 								<img src="img/marketplaces/wb.svg" alt="Wildberries" class="marketplaces-section__link-view" loading="lazy">
 								<div class="link__label">Wildberries</div>
 								<div class="link__icon icon-arrow-right"></div>
-							</a><a href="#" class="marketplaces-section__link link" target="_blank" title="Я. Маркет">
+							</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="marketplaces-section__link link" target="_blank" title="Я. Маркет">
 								<img src="img/marketplaces/jmarket.svg" alt="Я. Маркет" class="marketplaces-section__link-view" loading="lazy">
 								<div class="link__label">Я. Маркет</div>
 								<div class="link__icon icon-arrow-right"></div>
@@ -918,13 +923,13 @@
 					<div class="support__contact-block">
 						<div class="support__contact-label">Соцсети</div>
 						<div class="support__contact social-contacts">
-							<a href="#" class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark">
+							<a href="#" class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark" target="_blank">
 																										<div class="btn__label btn__label_hidden">Telegram</div>
 																										<div class="btn__icon icon-telegram"></div>
-																									</a><a href="#" class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark">
+																									</a><a href="#" class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark" target="_blank">
 																										<div class="btn__label btn__label_hidden">VK</div>
 																										<div class="btn__icon icon-vk"></div>
-																									</a><a href="#" class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark">
+																									</a><a href="#" class="social-contacts__item btn btn_social btn_square btn_md btn_semi-dark" target="_blank">
 																										<div class="btn__label btn__label_hidden">WatsApp</div>
 																										<div class="btn__icon icon-watsapp"></div>
 																									</a>
@@ -1112,7 +1117,7 @@
 							<div class="cm-checkbox__body"></div>
 						</div>
 						<div class="field__info">
-							<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+							<div class="field__label">Согласен на <a href="politics" class="link"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
 						</div>
 					</label>
 					<button type="submit" class="btn btn_primary btn_rect btn_md">
@@ -1133,7 +1138,7 @@
 		<figcaption class="logo__caption">Qumen Kitchen</figcaption>
 	</figure>
 </a>
-			<div class="footer__policy"><a href="#" class="link"><span class="link__label">Политика обработки<br>персональных данных</span></a></div>
+			<div class="footer__policy"><a href="#" class="link" target="_blank"><span class="link__label">Политика обработки<br>персональных данных</span></a></div>
 			<nav class="footer__nav">
 				<a href="#advantages" class="link footer__nav-item"><span class="link__label">Преимущества</span></a><a href="#projects" class="link footer__nav-item"><span class="link__label">Проекты</span></a><a href="#steps" class="link footer__nav-item"><span class="link__label">Этапы</span></a><a href="#manuals" class="link footer__nav-item"><span class="link__label">Видеоинструкции</span></a><a href="#builder" class="link footer__nav-item"><span class="link__label">Конструктор</span></a><a href="#factory" class="link footer__nav-item"><span class="link__label">Производство</span></a><a href="#faq" class="link footer__nav-item"><span class="link__label">FAQ</span></a>
 			</nav>
@@ -1142,7 +1147,7 @@
 				<div class="contacts__list">
 					<a href="mailto:help@tdegregor.ru" class="link"><span class="link__label">help@tdegregor.ru</span></a>
 					<a href="tel:88001013330" class="link"><span class="link__label">8 800 101-33-30</span></a>
-					<a href="https://go.2gis.com/hJ83n" class="link"><span class="link__label">Нижегородская область,<br>п. Садовский, д. 101, ком. 21</span></a>
+					<a href="https://go.2gis.com/hJ83n" class="link" target="_blank"><span class="link__label">Нижегородская область,<br>п. Садовский, д. 101, ком. 21</span></a>
 				</div>
 			</div>
 			<div class="marketplaces footer__marketplaces">
@@ -1152,7 +1157,7 @@
 		</a><a href="https://www.wildberries.ru/seller/250000361" class="marketplaces__item link" target="_blank" title="Wildberries">
 			<img src="img/marketplaces/wb-mono.svg" alt="Wildberries" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Wildberries</div>
-		</a><a href="#" class="marketplaces__item link" target="_blank" title="Я. Маркет">
+		</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="marketplaces__item link" target="_blank" title="Я. Маркет">
 			<img src="img/marketplaces/jmarket-mono.svg" alt="Я. Маркет" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Я. Маркет</div>
 		</a>
@@ -1173,13 +1178,13 @@
 		</a><a href="https://www.wildberries.ru/seller/250000361" class="marketplaces__item link" target="_blank" title="Wildberries">
 			<img src="img/marketplaces/wb-mono.svg" alt="Wildberries" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Wildberries</div>
-		</a><a href="#" class="marketplaces__item link" target="_blank" title="Я. Маркет">
+		</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="marketplaces__item link" target="_blank" title="Я. Маркет">
 			<img src="img/marketplaces/jmarket-mono.svg" alt="Я. Маркет" class="marketplaces__item-icon link__icon">
 			<div class="link__label link__label_hidden">Я. Маркет</div>
 		</a>
 </div>
 			<div class="footer__made-by">
-				<a href="#" class="link"><span class="link__label">Сделано в <strong>VZDH</strong></span></a>
+				<a href="https://vzdh.rocks/" target="_blank" class="link"><span class="link__label">Сделано в <strong>VZDH</strong></span></a>
 			</div>
 		</div>
 	</div>
@@ -1283,7 +1288,7 @@
 						<div class="cm-checkbox__body"></div>
 					</div>
 					<div class="field__info">
-						<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+						<div class="field__label">Согласен на <a href="politics" class="link"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
 					</div>
 				</label>
 				<button type="submit" class="btn btn_primary btn_rect btn_md">

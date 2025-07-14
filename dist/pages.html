@@ -28,7 +28,13 @@
 			}
 		</script>
 		
-	<style>.container[data-astro-cid-nnvtqp3h]{display:grid;gap:40px;padding:40px}h3[data-astro-cid-nnvtqp3h]{font-weight:600;margin-bottom:20px}</style><script type="module" src="/_astro/hoisted.mS1ZopMs.js"></script></head>
+	<style>.container[data-astro-cid-nnvtqp3h]{display:grid;gap:40px;padding:40px}h3[data-astro-cid-nnvtqp3h]{font-weight:600;margin-bottom:20px}</style><script type="module">window.projectFormHandler = function(form) {
+  console.log(form);
+};
+window.requestFormHandler = function(form) {
+  console.log(form);
+};
+</script></head>
 	<body class="tg-regular">
 		
 		<main>
@@ -155,7 +161,7 @@
 						<div class="cm-checkbox__body"></div>
 					</div>
 					<div class="field__info">
-						<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+						<div class="field__label">Согласен на <a href="politics" class="link"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
 					</div>
 				</label>
 				<button type="submit" class="btn btn_primary btn_rect btn_md">

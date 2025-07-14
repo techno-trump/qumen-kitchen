@@ -2,8 +2,11 @@
 @use "./mixins.scss" as mi;
 
 .projects {
+	position: relative;
+	z-index: 1;
 	color: var(--color-text-light);
 	overflow: hidden;
+	background-color: var(--color-sf-bg-inverted);
 	&__container {
 		position: relative;
 		z-index: 0;

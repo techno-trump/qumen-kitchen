@@ -46,6 +46,7 @@
 		border-radius: mi.rem(16);
 		overflow: hidden;
 		margin-bottom: mi.rem(16);
+		will-change: transform;
 		@media (max-width: config.$mbpT) {
 			margin-bottom: mi.rem(20);
 		}

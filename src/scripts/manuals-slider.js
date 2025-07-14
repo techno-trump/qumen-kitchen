@@ -16,7 +16,7 @@ function init() {
 			slidesPerView: 1.1,
 			breakpoints: {
 				900: {
-					slidesPerView: "auto",
+					slidesPerView: 3,
 				},
 				600: {
 					slidesPerView: 1.25,

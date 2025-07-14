@@ -8,6 +8,7 @@
 		position: relative;
 		border-radius: mi.rem(24);
 		overflow: hidden;
+		will-change: transform;
 		@media (max-width: config.$mbpMM) {
 			border-radius: mi.rem(12);
 		}
@@ -52,7 +53,7 @@
 		z-index: 1;
 		grid-column: 1/span 1;
 		grid-row: 1/span 1;
-		padding: mi.rem(30) mi.rem(66) mi.rem(38) mi.rem(30);
+		padding: mi.rem(30);
 		@media (max-width: config.$mbpT) {
 			padding: mi.rem(17) mi.rem(40) mi.rem(20) mi.rem(20);
 		}
@@ -86,6 +87,9 @@
 		@media (max-width: config.$mbpMM) {
 			font-size: mi.rem(12);
 		}
+	}
+	&__contact-block:nth-child(4) &__contact-label {
+		margin-bottom: mi.rem(8);
 	}
 	&__contact {
 		font-size: mi.rem(20);

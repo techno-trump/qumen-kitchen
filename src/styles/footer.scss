@@ -15,6 +15,9 @@
 		align-self: start;
 		grid-area: space;
 		height: mi.rem(58);
+		@media (max-width: config.$mbpT) {
+			height: mi.rem(67);
+		}
 	}
 	:root[data-page="builder"] &__widget-anchor {
 		@media (min-width: (config.$mbpT + 1px)) {

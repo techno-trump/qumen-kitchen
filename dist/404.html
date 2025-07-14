@@ -28,7 +28,13 @@
 			}
 		</script>
 		
-	<script type="module" src="/_astro/hoisted.mS1ZopMs.js"></script></head>
+	<script type="module">window.projectFormHandler = function(form) {
+  console.log(form);
+};
+window.requestFormHandler = function(form) {
+  console.log(form);
+};
+</script></head>
 	<body class="tg-regular">
 		<header id="header" class="header dark-context" data-page="404">
 	<div class="header__underlay">
@@ -118,13 +124,13 @@
 					<span class="link__icon icon-shopper  btn-icon"></span>
 				</button>
 				<div class="quick-access__popup" data-elem="drawer.panel">
-					<a href="#" class="quick-access__item" title="Ozon">
+					<a href="https://www.ozon.ru/seller/egregor-kyumen-2512784/products/?miniapp=seller_2512784" class="quick-access__item" target="_blank" title="Ozon">
 							<img src="img/marketplaces/ozon.svg" alt="Ozon" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Ozon</div>
-						</a><a href="#" class="quick-access__item" title="Wildberries">
+						</a><a href="https://www.wildberries.ru/seller/250000361" class="quick-access__item" target="_blank" title="Wildberries">
 							<img src="img/marketplaces/wb.svg" alt="Wildberries" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Wildberries</div>
-						</a><a href="#" class="quick-access__item" title="Я. Маркет">
+						</a><a href="https://market.yandex.ru/catalog--komplektuiushchie-dlia-kukhonnoi-mebeli/62840090/list?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D35447793%3B&hid=62837332&rs=eJwz4vnEyMnBIMGgcGXJb1kAGAIECw%2C%2C&businessId=35447793&glfilter=7893318%3A54905514" class="quick-access__item" target="_blank" title="Я. Маркет">
 							<img src="img/marketplaces/jmarket.svg" alt="Я. Маркет" class="quick-access__item-icon">
 							<div class="quick-access__item-label">Я. Маркет</div>
 						</a>
@@ -285,7 +291,7 @@
 						<div class="cm-checkbox__body"></div>
 					</div>
 					<div class="field__info">
-						<div class="field__label">Согласен на <a href="#" class="link" target="_blank"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
+						<div class="field__label">Согласен на <a href="politics" class="link"><span class="link__label">обработку персональных&nbsp;данных</span></a></div>
 					</div>
 				</label>
 				<button type="submit" class="btn btn_primary btn_rect btn_md">

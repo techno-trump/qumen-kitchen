@@ -9,6 +9,7 @@
 		position: relative;
 		overflow: hidden;
 		border-radius: mi.rem(24);
+		will-change: transform;
 		@media (max-width: config.$mbpT) {
 			max-width: calc(min(100%, 1920px) - var(--container-space) * 4);
 		}
@@ -51,9 +52,11 @@
 		}
 	}
 	&__inner {
-		flex: 0 1 min-content;
+		flex: 0 1 auto;
+		width: min-content;
 		@media (max-width: config.$mbpT) {
 			flex: 1 1 auto;
+			width: 100%;
 			display: flex;
 			flex-direction: column;
 		}

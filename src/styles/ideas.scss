@@ -47,6 +47,7 @@
 		grid-template-columns: 100%;
 		border-radius: mi.rem(24);
 		overflow: hidden;
+		will-change: transform;
 		@media (max-width: config.$mbpT) {
 			border-radius: 0;
 		}
@@ -58,13 +59,22 @@
 	&__slider {
 		position: relative;
 		z-index: 1;
+		background-color: var(--color-sf-light);
+		@media (max-width: config.$mbpT) {
+			padding: mi.rem(60) 0 mi.rem(70);
+		}
+		@media (max-width: config.$mbpMM) {
+			padding: mi.rem(38) 0 mi.rem(50);
+		}
 	}
 	&__slide {
 		flex: 0 0 100%;
 		--ratio: 60%;
-		background-color: var(--color-sf-light);
 		@media (max-width: config.$mbpT) {
-			--ratio: 88%;
+			--ratio: 66%;
+		}
+		@media (max-width: config.$mbpMM) {
+			--ratio: 62.5%;
 		}
 	}
 	&__slider-overlay {

@@ -65,10 +65,11 @@
 		overflow: hidden;
 		padding: mi.rem(60);
 		width: 100%;
-		max-width: mi.rem(580);
+		max-width: calc(mi.rem(520) + var(--padding-left));
 		height: 100%;
 		background-color: var(--color-sf-light-blur);
 		backdrop-filter: blur(80px);
+		padding-left: var(--padding-left);
 		:root._initialized & {
 			transition: transform cubic-bezier(0.5, 0,0,1) 0.8s;
 		}

@@ -33,7 +33,7 @@
 		}
 	}
 	&__slide {
-		--ratio: 58.80%;
+		--ratio: 48.80%;
 		flex: 0 0 100%;
 		width: 100%;
 		cursor: grab;
@@ -58,6 +58,7 @@
 	&__title {
 		display: inline-block;
 		font-size: mi.rem(42);
+		line-height: 1;
 		@media (max-width: config.$mbpT) {
 			line-height: 1.1;
 			font-size: mi.rem(32);

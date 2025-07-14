@@ -205,10 +205,11 @@
 		height: 0;
 		overflow: hidden;
 	}
-	@media (any-hover: hover) {
-		&:hover {
-			opacity: 0.5;
-		}
+	
+}
+@media (any-hover: hover) {
+	a.logo:hover {
+		opacity: 0.5;
 	}
 }
 .drawers {
@@ -432,6 +433,9 @@
 		transform: rotateX(180deg) translateY(20%);
 	}
 	&__btn {
+		.link__icon {
+			display: inline-block;
+		}
 		&_desc {
 			@media (max-width: config.$mbpT) {
 				display: none;

@@ -28,12 +28,19 @@ body {
 		align-items: end;
 		position: sticky;
 		top: var(--top);
+		//top: calc(var(--top) - mi.rem(20));
 	}
-	// :root[data-page="index"] &_collapsed &__wrapper, :root[data-page="index"]._scrolled &__wrapper {
-	// 	@media (min-width: (config.$mbpT + 1px)) {
-	// 		top: calc(var(--top) - mi.rem(20));
-	// 	}
-	// }
+	:root[data-page="index"] &_collapsed &__wrapper, :root[data-page="index"]._scrolled &__wrapper {
+		@media (min-width: (config.$mbpT + 1px)) {
+			top: calc(var(--top) + mi.rem(10));
+		}
+		@media (max-width: config.$mbpT) {
+			top: calc(var(--top) - mi.rem(6));
+		}
+		@media (max-width: config.$mbpMM) {
+			top: calc(var(--top) + mi.rem(4));
+		}
+	}
 	:root._initialized &__wrapper {
 		transition: top var(--speed);
 	}
@@ -221,6 +228,9 @@ body {
 	
 	:root._scrolled &__button &__button-inner, &#{&}_collapsed &__button &__button-inner {
 		padding: mi.rem(10) mi.rem(15);
+		@media (max-width: config.$mbpT) {
+			padding: mi.rem(14) mi.rem(20);
+		}
 		@media (max-width: config.$mbpMM) {
 			padding: mi.rem(9) mi.rem(15);
 		}
@@ -277,7 +287,10 @@ body {
 		}
 	}
 	:root._scrolled &__button_project &__label, &_collapsed &__button_project &__label {
-		transform: translateX(mi.rem(10));
+		transform: translateX(mi.rem(8));
+		@media (max-width: config.$mbpT) {
+			transform: translateX(mi.rem(2));
+		}
 		@media (max-width: config.$mbpMM) {
 			transform: translateX(mi.rem(6));
 		}

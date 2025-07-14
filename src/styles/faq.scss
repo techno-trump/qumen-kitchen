@@ -50,7 +50,9 @@
 		@media (max-width: config.$mbpMM) {
 			padding: mi.rem(12) 0;
 		}
+		
 	}
+	
 	&__item:first-child &__item-header {
 		padding-top: 0;
 	}
@@ -62,6 +64,7 @@
 	}
 	&__item-question {
 		font-size: mi.rem(20);
+		transition: color var(--speed);
 		@media (max-width: config.$mbpT) {
 			font-size: mi.rem(32);
 		}
@@ -96,6 +99,18 @@
 	&__item.disclosure_open &__item-sign {
 		color: var(--color-sf-light);
 		background-color: var(--color-accent);
+	}
+	&__item.disclosure_open &__item-question {
+		color: var(--color-accent);
+	}
+	@media (any-hover: hover) {
+		&__item-header:hover &__item-question {
+			color: var(--color-accent);
+		}
+		&__item-header:hover &__item-sign {
+			color: var(--color-sf-light);
+			background-color: var(--color-accent);
+		}
 	}
 	&__item-sign-icon {
 		width: mi.rem(12);

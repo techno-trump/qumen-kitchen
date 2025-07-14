@@ -11,6 +11,7 @@ class Slide extends EventEmitter {
 		this.root = root;
 		this.thumbRoot = thumbRoot;
 		this.slider = slider;
+		this.updateProgress(0);
 	}
 	updateProgress(progress) {
 		this.thumbRoot.style.setProperty("--progress", `${progress}%`);
@@ -35,11 +36,14 @@ export class VideoSlide extends Slide {
 	}
 	seekToEnd() {
 		this.pause();
-		this.video.currentTime = this.video.duration;
+		this.video.currentTime = this.video.duration || 0;
 	}
 	reset(progress = 0) {
+		this.video.currentTime = 0;
 		this.pause();
 		this.video.currentTime = 0;
+		this.progress = progress;
+		this.updateProgress(this.progress);
 	}
 	play() {
 		let tries = 0;
